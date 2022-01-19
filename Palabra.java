@@ -14,6 +14,7 @@ public class Palabra {
     public Palabra(String palabra) {
         this.palabra = palabra.toUpperCase();
         frecuencia = 1;
+        
     }
     
     /**

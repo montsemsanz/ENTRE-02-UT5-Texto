@@ -23,7 +23,8 @@ public class Texto {
      * e inicializa adecuadamente el resto de atributos
      */
     public Texto(int n) {
-        //TODO
+        Palabra[] palabras = new Palabra[n];
+        total = 0;
     }
 
     /**
@@ -31,9 +32,7 @@ public class Texto {
      * @return true si el texto está completo
      */
     public boolean textoCompleto() {
-        //TODO
-        
-        return true;
+        return total == palabras.length;
     }
 
     /**
@@ -42,9 +41,16 @@ public class Texto {
      * el texto y guardadas en el array
      */
     public int totalPalabras() {
-        //TODO
+        int totalDiferentes = 0;
+        for (int i = 0; i < total; i++) {
+            for (int j = 0; j < total; j++) {
+                if (!palabras[i].equals(palabras[j])) {
+                    totalDiferentes++;
+                }
+            }
+        }
         
-        return 0;
+        return totalDiferentes;
     }
 
     /**

@@ -16,7 +16,7 @@ public class Utilidades {
      */
     
     public static String capitalizarAlterna(String cadena) {
-        //TODO
+        
         
         return null;
     }
@@ -31,7 +31,7 @@ public class Utilidades {
      *
      */
     public static boolean tieneLetrasRepetidas(String cadena) {
-        //TODO
+        
         
         return false;
     }
