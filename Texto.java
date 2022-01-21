@@ -9,14 +9,12 @@ import java.util.Scanner;
  * y su frecuencia de aparición en el texto
  *
  * El array guarda como máximo n palabras distintas
- *
+ *@autor Iñigo Camarero
  *
  */
 public class Texto {
-
     private Palabra[] palabras;
     private int total;
-
     /**
      * Constructor
      * Crea el array al tamaño n
@@ -42,9 +40,11 @@ public class Texto {
      */
     public int totalPalabras() {
         int diferentes = 0;
-        for(int i = 0;i < palabras.length;i++) {
-            if(palabras[i] != palabras[i+1]) {
-                diferentes ++;
+        for(int i = 0;i < total;i++) {
+            for(int aux = 0; aux < total; aux++){
+                if(!palabras[i].equals(palabras[aux])){
+                    diferentes++;
+                }
             }
         }
         return diferentes;
@@ -73,8 +73,15 @@ public class Texto {
      * insertarPalabraEnOrden()
      */
     public void addPalabras(String linea) {
-        //TODO
-
+        String arraycopia [] = linea.split(",");
+        for(int i = 0; i < arraycopia.length;i++){
+            if(estaPalabra(arraycopia[i]) >= 0){
+                palabras[i].incrementar();
+            }
+            else{
+              insertarPalabraEnOrden(arraycopia[i]) ;
+            }
+        }
     }
 
     /**
@@ -85,7 +92,7 @@ public class Texto {
      */
     public int estaPalabra(String palabra) {
         int posicion = 0;
-         for(int i = 0;i < palabras.length;i++) {
+        for(int i = 0;i < palabras.length;i++) {
             if(palabra.compareToIgnoreCase(palabras[i].toString()) >= 0)  {
                 posicion = i;
             }
@@ -106,8 +113,13 @@ public class Texto {
      *
      */
     private void insertarPalabraEnOrden(String palabra) {
-        //TODO
-
+        int j = total - 1;
+        while(j >= 0 && palabras[j].toString().compareTo(palabra) >= 0){
+            palabras[j + 1] = palabras[j];
+            j = j -1;
+        }
+        total++;
+        palabras[j + 1]= palabra;
     }
 
     /**
@@ -121,9 +133,16 @@ public class Texto {
      *
      */
     public String toString() {
-        //TODO 
-
-        return null;
+        String resul = "";
+        int saltolinea = 0;
+        for (int j = 0; j < total ; j++){
+            resul += palabras[j].toString();
+            saltolinea++;
+            if (saltolinea % 5 == 0){
+                resul += "\n";
+            }
+        }
+        return resul;
     }
 
     /**
@@ -131,9 +150,9 @@ public class Texto {
      *  Si p es incorrecto se devuelve null
      *      
      */
-    public String getPalabra(int p) {
-        if (p >= 0 && p < palabras.length){
-            return palabras[p].getPalabra();
+    public Palabra getPalabra(int p) {
+        if (p >= 0 && p < total){
+            return palabras[p];
         }
         else{
             return null;
@@ -157,9 +176,12 @@ public class Texto {
      * repetidas
      */
     public String[] palabrasConLetrasRepetidas() {
-        //TODO 
+        String [] palabrasConLetrasRepetidas = new String [total];
+        for (int i = 0; i < total ; i++){
 
-        return null;    }
+        }
+        return palabrasConLetrasRepetidas;    
+    }
 
     /**
      *
