@@ -32,9 +32,7 @@ public class Texto {
      * @return true si el texto está completo
      */
     public boolean textoCompleto() {
-        //TODO
-        
-        return true;
+        return total == palabras.length;
     }
 
     /**
