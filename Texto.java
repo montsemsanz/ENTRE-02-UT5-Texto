@@ -10,10 +10,9 @@ import java.util.Scanner;
  *
  * El array guarda como máximo n palabras distintas
  *
- *
+ * @author - Asier Galisteo
  */
 public class Texto {
-    private final String ESPACIO = " ";
     private Palabra[] palabras;
     private int total;
 
@@ -68,6 +67,21 @@ public class Texto {
      */
     public void addPalabras(String linea) {
         //TODO
+        String str = linea.toUpperCase();
+        String delimitadores = "[.,' ']+";
+        String[] nuevo = str.split(delimitadores);
+
+        if(!textoCompleto()){
+            for(int i = 0;i < nuevo.length;i++){
+                if(estaPalabra(nuevo[i]) == -1){
+                    insertarPalabraEnOrden(nuevo[i]);
+                    
+                }
+                else{
+                    palabras[estaPalabra(nuevo[i])].incrementar();
+                }
+            }
+        }
 
     }
 
@@ -78,11 +92,9 @@ public class Texto {
      *  Indiferente mayúsculas y minúsculas
      */
     public int estaPalabra(String palabra) {
-        // String str = palabra;
-        // String delimitadores = "[.,ESPACIO]+";
-        // String[] nuevo = str.split(delimitadores);
+       
         for(int i = 0; i < total; i++){
-            if(palabra.equalsIgnoreCase(palabras[i].getPalabra())){
+            if(palabras[i].getPalabra().equalsIgnoreCase(palabra)){
                 return i;
             }
         }
@@ -100,6 +112,7 @@ public class Texto {
      *
      */
     private void insertarPalabraEnOrden(String palabra) {
+        // palabra = palabra.toUpperCase();
         int i = total - 1;
         while(i >= 0 && palabras[i].getPalabra().compareTo(palabra) > 0){
             palabras[i + 1] = palabras[i];
@@ -107,10 +120,8 @@ public class Texto {
         }
         palabras[i + 1] = new Palabra(palabra);
         total++;
-        
 
     }
-    
     /**
      * Representación textual del array de palabras
      * Cada palabra y su frecuencia de aparición
@@ -157,7 +168,9 @@ public class Texto {
     public String[] palabrasConLetrasRepetidas() {
         //TODO 
 
-        return null;    }
+        return null;    
+    }
+
     /**
      *
      * @return un array con la frecuencia de palabras de cada longitud

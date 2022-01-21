@@ -4,7 +4,7 @@ import java.util.stream.IntStream;
 /**
  *  Punto de entrada a la aplicación 
  *
- *
+ * @author - Asier Galisteo
  */
 public class AppTexto {
     
