@@ -41,9 +41,7 @@ public class Texto {
      * el texto y guardadas en el array
      */
     public int totalPalabras() {
-        //TODO
-        
-        return 0;
+        return total;
     }
 
     /**
