@@ -66,8 +66,7 @@ public class Texto {
      * insertarPalabraEnOrden()
      */
     public void addPalabras(String linea) {
-        //TODO
-        String str = linea.toUpperCase();
+        String str = linea;
         String delimitadores = "[.,' ']+";
         String[] nuevo = str.split(delimitadores);
 
@@ -112,9 +111,9 @@ public class Texto {
      *
      */
     private void insertarPalabraEnOrden(String palabra) {
-        // palabra = palabra.toUpperCase();
+        
         int i = total - 1;
-        while(i >= 0 && palabras[i].getPalabra().compareTo(palabra) > 0){
+        while(i >= 0 && palabras[i].getPalabra().compareToIgnoreCase(palabra) > 0){
             palabras[i + 1] = palabras[i];
             i--;
         }
