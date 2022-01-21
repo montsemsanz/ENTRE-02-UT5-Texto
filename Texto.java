@@ -129,8 +129,14 @@ public class Texto {
      *
      */
     private void insertarPalabraEnOrden(String palabra) {
-        //TODO
-
+        //Aqui hago una adaptación del codigo que aparece en los apuntes
+        int i = total -1;
+        while(i >= 0 && palabras[i].toString().compareTo(palabra)>=0) {
+            palabras[i + 1] = palabras[i];
+            i--;
+        }
+        // palabras[i + 1].toString() = palabra;
+        total++;
     }
 
     /**
@@ -144,9 +150,16 @@ public class Texto {
      *
      */
     public String toString() {
-        //TODO 
-
-        return null;
+        int contador = 0;
+        String cadena = ""; 
+        for(int i = 0; i < total; i++) {
+            cadena += palabras[i].toString();
+            if(contador % 5 == 0) {
+                cadena += "\n";
+            }
+            contador++;
+        }
+        return cadena;
     }
 
     /**
@@ -155,7 +168,9 @@ public class Texto {
      *      
      */
     public Palabra getPalabra(int p) {
-        //TODO 
+        if(p < total && p >= 0) {
+            return palabras[p];
+        }
 
         return null;
     }
@@ -166,7 +181,10 @@ public class Texto {
      * capitalizadas de forma alterna
      */
     public String[] capitalizarAlterna() {
-        //TODO 
+        String[] capitalizado = new String[total];
+        for(int i = 0; i < total; i++) {
+            capitalizado[i] = palabras[i].toString().
+        }
 
         return null;
     }
@@ -179,7 +197,8 @@ public class Texto {
     public String[] palabrasConLetrasRepetidas() {
         //TODO 
 
-        return null;    }
+        return null;    
+    }
 
     /**
      *
