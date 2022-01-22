@@ -79,7 +79,7 @@ public class Texto {
                 palabras[i].incrementar();
             }
             else{
-              insertarPalabraEnOrden(arraycopia[i]) ;
+                insertarPalabraEnOrden(arraycopia[i]) ;
             }
         }
     }
@@ -92,12 +92,17 @@ public class Texto {
      */
     public int estaPalabra(String palabra) {
         int posicion = 0;
-        for(int i = 0;i < palabras.length;i++) {
-            if(palabra.compareToIgnoreCase(palabras[i].toString()) >= 0)  {
-                posicion = i;
-            }
-            else {
-                posicion = -1;
+        if (total == 0){
+            System.out.println("esta vacia");
+        }
+        else{
+            for(int i = 0;i < palabras.length;i++) {
+                if(palabra.compareToIgnoreCase(palabras[i].toString()) >= 0)  {
+                    posicion = i;
+                }
+                else {
+                    posicion = -1;
+                }
             }
         }
         return posicion;
@@ -114,12 +119,12 @@ public class Texto {
      */
     private void insertarPalabraEnOrden(String palabra) {
         int j = total - 1;
-        while(j >= 0 && palabras[j].toString().compareTo(palabra) >= 0){
+        while(j > 0 && palabras[j].toString().compareTo(palabra) >= 0){
             palabras[j + 1] = palabras[j];
             j = j -1;
         }
         total++;
-        palabras[j + 1]= palabra;
+        palabras[j + 1]= new Palabra (palabra);
     }
 
     /**
@@ -177,8 +182,16 @@ public class Texto {
      */
     public String[] palabrasConLetrasRepetidas() {
         String [] palabrasConLetrasRepetidas = new String [total];
+        int aux = 0;
         for (int i = 0; i < total ; i++){
-
+            int num = 0;
+            for (int j = 1;j < palabras[i].toString().length();j++){
+                if(palabras[i].toString().indexOf(num)==palabras[i].toString().indexOf(j)){
+                    palabrasConLetrasRepetidas[aux] = palabras[i].toString();
+                    aux++;
+                }
+            }
+            num++;
         }
         return palabrasConLetrasRepetidas;    
     }
@@ -190,9 +203,15 @@ public class Texto {
      *
      */
     public int[] calcularFrecuenciaLongitud() {
-        //TODO 
-
-        return null;
+        int [] frecupalabras = new int [total];
+        int frecuencia = 0;
+        int i = 0;
+        while(i < total){
+            frecupalabras[frecuencia] = palabras[i].getFrecuencia();
+            frecuencia++;
+            i++;
+        }
+        return frecupalabras;
     }
 
     /**
@@ -200,11 +219,23 @@ public class Texto {
      * @param frecuencia se borra del array palabras aquellas de frecuencia
      *                   menor a la proporcionada
      * @return el n de palabras borradas
+     * 
      */
     public int borrarDeFrecuenciaMenor(int frecuencia) {
-        //TODO 
-
-        return 0;
+        //Aparece en los apuntes el codido de borrado y desplazamiento a la izda
+        int totalborradas = 0;
+        int x = 0;
+        while (x < total){
+            if(palabras[x].getFrecuencia() < frecuencia){
+                for(int j = x +1 ; j < total; j++) {
+                    palabras[j - 1] = palabras[j];
+                    totalborradas++;
+                    total--;
+                }
+            }
+            x++;
+        }
+        return totalborradas;
     }
 
     /**
@@ -212,7 +243,7 @@ public class Texto {
      *  serie de líneas.
      *  Cada línea contiene varias palabras separadas
      *  por espacios o el . o la ,
-     *
+     * 
      */
     public void leerDeFichero(String nombre) {
         Scanner sc = new Scanner(
