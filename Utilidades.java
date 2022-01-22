@@ -19,7 +19,7 @@ public class Utilidades {
         String capitalizar = "";
         int tamaño = cadena.length();
         int posicion = 0;
-        for(int i = 0; i < tamaño; i++)  {
+        for(int i = 0; i <= tamaño; i++)  {
             for(int j = 0; j <= 2 && posicion < cadena.length();j++)   {
                 if(i % 2 == 0)   {
                     capitalizar += cadena.valueOf(cadena.charAt(posicion)).toUpperCase();
@@ -44,7 +44,14 @@ public class Utilidades {
      *
      */
     public static boolean tieneLetrasRepetidas(String cadena) {
-
+        cadena = cadena.toLowerCase();
+        for(int i = 0; i < cadena.length(); i++)   {
+            for(int j = 0; j < cadena.length(); j++)    {
+                if((i != j) && (cadena.charAt(i) == cadena.charAt(j)))    {
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
