@@ -23,7 +23,8 @@ public class Texto {
      * e inicializa adecuadamente el resto de atributos
      */
     public Texto(int n) {
-        //TODO
+        palabras = new Palabra[n];
+        total = 0;
     }
 
     /**
@@ -31,9 +32,7 @@ public class Texto {
      * @return true si el texto está completo
      */
     public boolean textoCompleto() {
-        //TODO
-        
-        return true;
+        return total == palabras.length;
     }
 
     /**
@@ -42,9 +41,15 @@ public class Texto {
      * el texto y guardadas en el array
      */
     public int totalPalabras() {
-        //TODO
-        
-        return 0;
+        int totalPalabras = total;
+        for(int i = 0; i < total; i++)  {
+            for(int j = 0; j < total; j++)  {
+                if(palabras[i].equals(palabras[j]))  {
+                    totalPalabras--;                
+                }
+            }
+        }
+        return totalPalabras;
     }
 
     /**
@@ -70,11 +75,11 @@ public class Texto {
      * insertarPalabraEnOrden()
      */
     public void addPalabras(String linea) {
-        //TODO
+        
 
     }
-    
-     /**
+
+    /**
      *  dada una palabra devuelve la posición en la que se
      *  encuentra en el array o -1 si no está
      *
@@ -82,8 +87,7 @@ public class Texto {
      */
     public int estaPalabra(String palabra) {
         //TODO
-        
-        
+
         return 0;
     }
 
@@ -97,16 +101,9 @@ public class Texto {
      *
      */
     private void insertarPalabraEnOrden(String palabra) {
-       //TODO
-       
-       
-       
-       
-       
-       
-    }
+        //TODO
 
-   
+    }
 
     /**
      * Representación textual del array de palabras
@@ -120,12 +117,8 @@ public class Texto {
      */
     public String toString() {
         //TODO 
-        
-        
-        
-        
-        return null;
 
+        return null;
     }
 
     /**
@@ -135,28 +128,19 @@ public class Texto {
      */
     public Palabra getPalabra(int p) {
         //TODO 
-        
-        
-        
-        
-        return null;
 
+        return null;
     }
 
-    
     /**
      *
      * @return un array de cadenas con las palabras del texto
      * capitalizadas de forma alterna
      */
     public String[] capitalizarAlterna() {
-       //TODO 
-        
-        
-        
-        
-        return null;
+        //TODO 
 
+        return null;
     }
 
     /**
@@ -166,13 +150,10 @@ public class Texto {
      */
     public String[] palabrasConLetrasRepetidas() {
         //TODO 
-        
-        
-        
-        
+
         return null;    }
 
-     /**
+    /**
      *
      * @return un array con la frecuencia de palabras de cada longitud
      * La palabra más larga consideraremos de longitud 15
@@ -180,13 +161,10 @@ public class Texto {
      */
     public int[] calcularFrecuenciaLongitud() {
         //TODO 
-        
-        
-        
-        
+
         return null;
     }
-    
+
     /**
      *
      * @param frecuencia se borra del array palabras aquellas de frecuencia
@@ -195,14 +173,9 @@ public class Texto {
      */
     public int borrarDeFrecuenciaMenor(int frecuencia) {
         //TODO 
-        
-        
-        
-        
+
         return 0;
     }
-
-   
 
     /**
      *  Lee de un fichero un texto formado por una
