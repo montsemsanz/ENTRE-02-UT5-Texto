@@ -86,9 +86,14 @@ public class Texto {
      *  Indiferente mayúsculas y minúsculas
      */
     public int estaPalabra(String palabra) {
-        //TODO
-
-        return 0;
+        palabra = palabra.toLowerCase();
+        int pos = 0;
+        for(int i = 0; i < total; i++)   {
+            if(palabras[i].getPalabra() == palabra)   {
+                pos = i;
+            }
+        }
+        return pos;
     }
 
     /**
@@ -101,8 +106,13 @@ public class Texto {
      *
      */
     private void insertarPalabraEnOrden(String palabra) {
-        //TODO
-
+        int i = total - 1;
+        while(i >= 0 && palabras[i].getPalabra().compareTo(palabra) > 0) {
+            palabras[i + 1] = palabras[i];
+            i--;
+        }
+        palabras[i + 1] = new Palabra(palabra);
+        total++;
     }
 
     /**
