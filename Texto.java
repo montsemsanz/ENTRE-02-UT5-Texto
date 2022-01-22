@@ -69,18 +69,15 @@ public class Texto {
         //TODO
 
     }
-    
-     /**
+
+    /**
      *  dada una palabra devuelve la posición en la que se
      *  encuentra en el array o -1 si no está
      *
      *  Indiferente mayúsculas y minúsculas
      */
-    public int estaPalabra(String palabra) {
-        //TODO
-        
-        
-        return 0;
+    public int estaPalabra(String palabra) {    
+        return Arrays.binarySearch(palabras, 0, total, palabra) ;
     }
 
     /**
@@ -93,16 +90,16 @@ public class Texto {
      *
      */
     private void insertarPalabraEnOrden(String palabra) {
-       //TODO
-       
-       
-       
-       
-       
-       
+        // En este metodo adapto el codigo de los apuntes para poder ejecutarlo en este proyecto
+        int aux = total -1;
+        // Empieza a recorrer el array desde atras
+        while(aux > 0 && palabras[aux].toString().compareTo(palabra)>=0) {
+            palabras[aux + 1] = palabras[aux];
+            aux--;
+        }
+        palabras[aux + 1] = new Palabra(palabra);
+        total++;
     }
-
-   
 
     /**
      * Representación textual del array de palabras
@@ -116,12 +113,8 @@ public class Texto {
      */
     public String toString() {
         //TODO 
-        
-        
-        
-        
-        return null;
 
+        return null;
     }
 
     /**
@@ -131,28 +124,19 @@ public class Texto {
      */
     public Palabra getPalabra(int p) {
         //TODO 
-        
-        
-        
-        
-        return null;
 
+        return null;
     }
 
-    
     /**
      *
      * @return un array de cadenas con las palabras del texto
      * capitalizadas de forma alterna
      */
     public String[] capitalizarAlterna() {
-       //TODO 
-        
-        
-        
-        
-        return null;
+        //TODO 
 
+        return null;
     }
 
     /**
@@ -162,13 +146,11 @@ public class Texto {
      */
     public String[] palabrasConLetrasRepetidas() {
         //TODO 
-        
-        
-        
-        
-        return null;    }
 
-     /**
+        return null;    
+    }
+
+    /**
      *
      * @return un array con la frecuencia de palabras de cada longitud
      * La palabra más larga consideraremos de longitud 15
@@ -176,13 +158,10 @@ public class Texto {
      */
     public int[] calcularFrecuenciaLongitud() {
         //TODO 
-        
-        
-        
-        
+
         return null;
     }
-    
+
     /**
      *
      * @param frecuencia se borra del array palabras aquellas de frecuencia
@@ -191,14 +170,9 @@ public class Texto {
      */
     public int borrarDeFrecuenciaMenor(int frecuencia) {
         //TODO 
-        
-        
-        
-        
+
         return 0;
     }
-
-   
 
     /**
      *  Lee de un fichero un texto formado por una
