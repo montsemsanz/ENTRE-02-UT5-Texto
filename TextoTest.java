@@ -17,7 +17,7 @@ class TextoTest {
         texto = new Texto(50);
 
     }
-    
+
     @AfterEach
     public void tearDown() {
     }
@@ -38,6 +38,7 @@ class TextoTest {
         assertTrue(texto.estaPalabra("amiga") == 0);
 
     }
+
     @Test
     public void testAddPalabras() {
         texto.addPalabras(" la casa de la playa de la amiga    ");
@@ -70,13 +71,12 @@ class TextoTest {
         int frecuencia = 2;
         int borradas = texto.borrarDeFrecuenciaMenor(frecuencia);
         assertTrue(borradas == 3);
-        
+
         int p = texto.estaPalabra("de");
         assertTrue(p == 0);
         p = texto.estaPalabra("la");
         assertTrue(p == 1);
 
-        
     }
 
     @Test

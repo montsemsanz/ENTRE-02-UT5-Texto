@@ -93,7 +93,6 @@ public class Texto {
      * insertarPalabraEnOrden()
      */
     public void addPalabras(String linea) {
-        //TODO
 
     }
 
@@ -104,6 +103,9 @@ public class Texto {
      *  Indiferente mayúsculas y minúsculas
      */
     public int estaPalabra(String palabra) {
+        if(total == 0){
+            return -1;
+        }
         int posicion = 0;
         palabra = palabra.toLowerCase();
         for(int i = 0; i < total; i++) {
@@ -131,11 +133,11 @@ public class Texto {
     private void insertarPalabraEnOrden(String palabra) {
         //Aqui hago una adaptación del codigo que aparece en los apuntes
         int i = total -1;
-        while(i >= 0 && palabras[i].toString().compareTo(palabra)>=0) {
+        while(i > 0 && palabras[i].toString().compareTo(palabra)>=0) {
             palabras[i + 1] = palabras[i];
             i--;
         }
-        // palabras[i + 1].toString() = palabra;
+        palabras[i + 1] = new Palabra(palabra);
         total++;
     }
 
@@ -183,7 +185,7 @@ public class Texto {
     public String[] capitalizarAlterna() {
         String[] capitalizado = new String[total];
         for(int i = 0; i < total; i++) {
-            capitalizado[i] = palabras[i].toString().
+            capitalizado[i] = palabras[i].toString();
         }
 
         return null;
@@ -195,9 +197,19 @@ public class Texto {
      * repetidas
      */
     public String[] palabrasConLetrasRepetidas() {
-        //TODO 
+        String[] repetidas = new String[total];
+        int repetidasL = 0;
+        for(int i = 0; i < total; i++) {
+            for(int j = 0; j < palabras[i].toString().length(); j++){
+                for(int h = 1; h < palabras[i].toString().length();h++){
+                    if(palabras[i].toString().indexOf(j) == palabras[i].toString().indexOf(h)){
+                        repetidas[repetidasL] = palabras[i].toString();                 
+                    }
+                }
+            }
+        }
 
-        return null;    
+        return repetidas;    
     }
 
     /**
