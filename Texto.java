@@ -74,7 +74,7 @@ public class Texto {
             for(int i = 0;i < nuevo.length;i++){
                 if(estaPalabra(nuevo[i]) == -1){
                     insertarPalabraEnOrden(nuevo[i]);
-                    
+
                 }
                 else{
                     palabras[estaPalabra(nuevo[i])].incrementar();
@@ -91,7 +91,7 @@ public class Texto {
      *  Indiferente mayúsculas y minúsculas
      */
     public int estaPalabra(String palabra) {
-       
+
         for(int i = 0; i < total; i++){
             if(palabras[i].getPalabra().equalsIgnoreCase(palabra)){
                 return i;
@@ -111,7 +111,7 @@ public class Texto {
      *
      */
     private void insertarPalabraEnOrden(String palabra) {
-        
+
         int i = total - 1;
         while(i >= 0 && palabras[i].getPalabra().compareToIgnoreCase(palabra) > 0){
             palabras[i + 1] = palabras[i];
@@ -121,6 +121,7 @@ public class Texto {
         total++;
 
     }
+
     /**
      * Representación textual del array de palabras
      * Cada palabra y su frecuencia de aparición
@@ -133,7 +134,7 @@ public class Texto {
      */
     public String toString() {
         //TODO 
-        
+
         return null;
     }
 
@@ -166,10 +167,31 @@ public class Texto {
      * repetidas
      */
     public String[] palabrasConLetrasRepetidas() {
-        //TODO 
-
-        return null;    
+        String[] repetida = new String[tieneRepetidas()];
+        int j = 0;
+        for(int i = 0; i < total; i++){
+            if(Utilidades.tieneLetrasRepetidas(palabras[i].getPalabra())){
+                repetida[j] = palabras[i].getPalabra();
+                j++;
+            }
+        }
+        return repetida;    
     }
+
+    /**
+     * Método auxiliar de ayuda para saber cuantas palabras tienen letras repetidas en el array palabras
+     */
+    private int tieneRepetidas()
+    {
+        int repes = 0;
+        for(int i = 0; i < total;i++){
+            if(Utilidades.tieneLetrasRepetidas(palabras[i].getPalabra())){
+                repes++;
+            }
+        }
+        return repes;
+    }
+
 
     /**
      *
