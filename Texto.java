@@ -66,7 +66,7 @@ public class Texto {
      * insertarPalabraEnOrden()
      */
     public void addPalabras(String linea) {
-        String str = linea;
+        String str = linea.trim();
         String delimitadores = "[.,' ']+";
         String[] nuevo = str.split(delimitadores);
 
@@ -133,7 +133,7 @@ public class Texto {
      */
     public String toString() {
         //TODO 
-
+        
         return null;
     }
 
@@ -143,9 +143,10 @@ public class Texto {
      *      
      */
     public Palabra getPalabra(int p) {
-        //TODO 
-
-        return null;
+        if(p < 0 || p >= total){
+            return null;
+        }
+        return palabras[p];
     }
 
     /**
