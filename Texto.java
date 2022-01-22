@@ -66,8 +66,7 @@ public class Texto {
      * insertarPalabraEnOrden()
      */
     public void addPalabras(String linea) {
-        //TODO
-
+        
     }
 
     /**
@@ -77,7 +76,16 @@ public class Texto {
      *  Indiferente mayúsculas y minúsculas
      */
     public int estaPalabra(String palabra) {    
-        return Arrays.binarySearch(palabras, 0, total, palabra) ;
+        // Bucle para recorrer el Array
+        for(int i = 0; i < total; i++){
+            // Comapara la palabra de la posicion sin importar mayusculas o minusculas
+            if(palabras[i].getPalabra().equalsIgnoreCase(palabra)){
+                // Si esta la palabra devuelve su posicio
+                return i;
+            }
+        }
+        // Si no esta la palabra develve el -1
+        return -1;
     }
 
     /**
@@ -134,8 +142,6 @@ public class Texto {
      * capitalizadas de forma alterna
      */
     public String[] capitalizarAlterna() {
-        //TODO 
-
         return null;
     }
 
