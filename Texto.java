@@ -70,18 +70,15 @@ public class Texto {
         String delimitadores = "[.,' ']+";
         String[] nuevo = str.split(delimitadores);
 
-        if(!textoCompleto()){
-            for(int i = 0;i < nuevo.length;i++){
-                if(estaPalabra(nuevo[i]) == -1){
-                    insertarPalabraEnOrden(nuevo[i]);
+        for(int i = 0;i < nuevo.length;i++){
+            if(estaPalabra(nuevo[i]) >= 0){
+                palabras[estaPalabra(nuevo[i])].incrementar();
 
-                }
-                else{
-                    palabras[estaPalabra(nuevo[i])].incrementar();
-                }
+            }
+            else if(estaPalabra(nuevo[i]) == -1 && !textoCompleto()){
+                insertarPalabraEnOrden(nuevo[i]);
             }
         }
-
     }
 
     /**
@@ -173,6 +170,7 @@ public class Texto {
             if(Utilidades.tieneLetrasRepetidas(palabras[i].getPalabra())){
                 repetida[j] = palabras[i].getPalabra();
                 j++;
+
             }
         }
         return repetida;    
@@ -191,7 +189,6 @@ public class Texto {
         }
         return repes;
     }
-
 
     /**
      *

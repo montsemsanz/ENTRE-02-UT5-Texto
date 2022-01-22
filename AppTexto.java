@@ -9,7 +9,10 @@ import java.util.stream.IntStream;
 public class AppTexto {
     
     public static void main(String[] args) {
-        
+            if(args.length != 2){
+                System.out.println("Error en nº argumentos\nUsage: java AppTexto <fichero> <n>");
+                return;
+            }
         
             Texto texto = new Texto(Integer.parseInt(args[1]));
             texto.leerDeFichero(args[0]);
