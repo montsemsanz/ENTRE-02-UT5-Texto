@@ -169,9 +169,15 @@ public class Texto {
      * repetidas
      */
     public String[] palabrasConLetrasRepetidas() {
-        //TODO 
-
-        return null;    
+        String[] letrasRepetidas = new String[total];
+        int tamano = 0;
+        for(int i = 0; i < total; i++)   {
+            if(Utilidades.tieneLetrasRepetidas(palabras[i].getPalabra()))   {
+                letrasRepetidas[tamano] = palabras[i].getPalabra();
+                tamano++;
+            }
+        }
+        return Arrays.copyOf(letrasRepetidas, tamano);
     }
 
     /**
