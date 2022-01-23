@@ -16,9 +16,16 @@ public class Utilidades {
      */
     
     public static String capitalizarAlterna(String cadena) {
-        //TODO
         
-        return null;
+        
+        String aux1 = cadena.substring(0, 3);
+        String aux2 = cadena.substring(3, cadena.length());
+        
+        aux1 = aux1.toUpperCase();
+        
+        String str = aux1 + aux2;
+        
+        return str;
     }
     
     
