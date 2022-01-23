@@ -29,9 +29,7 @@ public class Texto {
      * @return true si el texto está completo
      */
     public boolean textoCompleto() {
-        //TODO
-        
-        return true;
+        return total == palabras.length;
     }
 
     /**
@@ -40,9 +38,7 @@ public class Texto {
      * el texto y guardadas en el array
      */
     public int totalPalabras() {
-        //TODO
-        
-        return 0;
+        return total;
     }
 
     /**
