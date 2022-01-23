@@ -187,9 +187,12 @@ public class Texto {
      *
      */
     public int[] calcularFrecuenciaLongitud() {
-        //TODO 
-
-        return null;
+        int[] frecuenciaLongitud = new int[15];
+        for(int i = 0; i < total; i++)   {
+            int posNum = palabras[i].getPalabra().length();
+            frecuenciaLongitud[posNum - 1]++;
+        }
+        return frecuenciaLongitud;
     }
 
     /**
@@ -199,7 +202,6 @@ public class Texto {
      * @return el n de palabras borradas
      */
     public int borrarDeFrecuenciaMenor(int frecuencia) {
-        //TODO 
 
         return 0;
     }
