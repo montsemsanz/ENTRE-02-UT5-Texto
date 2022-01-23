@@ -23,17 +23,16 @@ public class Texto {
      * e inicializa adecuadamente el resto de atributos
      */
     public Texto(int n) {
-        //TODO
+        palabras = new Palabra[n];
+        total = 0;
     }
 
-    /**
+     /**
      *
      * @return true si el texto está completo
      */
     public boolean textoCompleto() {
-        //TODO
-        
-        return true;
+        return total == palabras.length;
     }
 
     /**
@@ -42,9 +41,13 @@ public class Texto {
      * el texto y guardadas en el array
      */
     public int totalPalabras() {
-        //TODO
-        
-        return 0;
+        int tPal = 0;
+        for(int i = 0; i < palabras.length; i++){
+        if(palabras[i].getFrecuencia() == 1){
+        tPal ++;
+        }
+        }
+        return tPal;
     }
 
     /**
@@ -81,10 +84,13 @@ public class Texto {
      *  Indiferente mayúsculas y minúsculas
      */
     public int estaPalabra(String palabra) {
-        //TODO
-        
-        
-        return 0;
+        int posicion = 0;
+        for(int i = 0; i < palabras.length; i++){
+          if(palabras[i].getPalabra().toLowerCase() == palabra.toLowerCase()){
+          return i;
+          }
+        }
+        return -1;
     }
 
     /**
@@ -96,15 +102,22 @@ public class Texto {
      *                no está y que es posible añadirla
      *
      */
-    private void insertarPalabraEnOrden(String palabra) {
-       //TODO
+    // private void insertarPalabraEnOrden(String palabra) {
+       // for(int i = 0; i < palabras.length; i++){
+        // if(palabras[i].getPalabra().compareTo(palabra) >= 0){
+        // for(int j = palabras.length; j > i; j--){
+          // palabras[j + 1] = palabras[j];
+          // palabras[i] = Palabra p(palabra);
+        // }
+        // }
+        // }
        
        
        
        
        
        
-    }
+    // }
 
    
 
