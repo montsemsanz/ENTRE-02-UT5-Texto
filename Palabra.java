@@ -11,7 +11,7 @@ public class Palabra {
     /**
      * Constructor de la clase Palabra
      */
-    public Palabra(String palabra) {
+    public Palabra(String palabra){
         this.palabra = palabra.toUpperCase();
         frecuencia = 1;
     }
@@ -35,7 +35,6 @@ public class Palabra {
      */
     public void incrementar() {
         frecuencia++;
-        
     }
     
     /**
