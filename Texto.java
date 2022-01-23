@@ -23,7 +23,8 @@ public class Texto {
      * e inicializa adecuadamente el resto de atributos
      */
     public Texto(int n) {
-        //TODO
+        palabras = new Palabra[n];
+        total = 0;
     }
 
     /**
@@ -31,9 +32,7 @@ public class Texto {
      * @return true si el texto está completo
      */
     public boolean textoCompleto() {
-        //TODO
-        
-        return true;
+        return total == palabras.length;
     }
 
     /**
@@ -81,10 +80,14 @@ public class Texto {
      *  Indiferente mayúsculas y minúsculas
      */
     public int estaPalabra(String palabra) {
-        //TODO
+        for(int i = 0; i < total; i++){
+            if(palabra.equalsIgnoreCase(palabras[i].getPalabra())){
+                return i;
+            }
+        }
+        return -1;
         
         
-        return 0;
     }
 
     /**
@@ -96,11 +99,16 @@ public class Texto {
      *                no está y que es posible añadirla
      *
      */
-    private void insertarPalabraEnOrden(String palabra) {
-       //TODO
-       
-       
-       
+    public void insertarPalabraEnOrden(String palabra) {
+        int i = total - 1;
+        while (i >= 0 && (palabras[i].getPalabra().compareTo(palabra)>1)) {
+            palabras[i + 1] = palabras[i];
+            i -- ;
+        }
+        palabras[i + 1] = new Palabra(palabra); 
+        total ++; 
+           
+        
        
        
        
@@ -170,7 +178,8 @@ public class Texto {
         
         
         
-        return null;    }
+        return null;    
+    }
 
      /**
      *
