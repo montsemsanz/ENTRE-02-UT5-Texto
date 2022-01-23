@@ -42,12 +42,8 @@ public class Texto {
      */
     public int totalPalabras() {
         int cantidad = 0;
-        int j = 0;
-        for(int i = 1; i < palabras.length; i++){
-            if(palabras[j] != palabras[i]){
-                cantidad++;
-            }
-            j++;
+        for(int i = 1; i < total; i++){
+            cantidad++;
         }
         return cantidad;
     }
@@ -86,10 +82,13 @@ public class Texto {
      *  Indiferente mayúsculas y minúsculas
      */
     public int estaPalabra(String palabra) {
-        
-        
-        
-        return 0;
+        int p = -1;
+        for(int i = 0; i < total; i++){
+            if(palabras[i].getPalabra().toUpperCase() == palabra.toUpperCase()){
+                p = i;
+            }
+        }
+        return p;
     }
 
     /**
@@ -102,16 +101,15 @@ public class Texto {
      *
      */
     private void insertarPalabraEnOrden(String palabra) {
-       //TODO
-       
-       
-       
-       
-       
-       
+        Palabra pal = new Palabra(palabra);
+        int i = total - 1;
+        while(i >= 0 && palabras[i].getPalabra().compareTo(palabra) > 1){
+            palabras[i + 1] = palabras[i];
+            i--;
+        }
+        palabras[i + 1] = pal;
+        total++;
     }
-
-   
 
     /**
      * Representación textual del array de palabras
