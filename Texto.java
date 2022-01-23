@@ -41,9 +41,15 @@ public class Texto {
      * el texto y guardadas en el array
      */
     public int totalPalabras() {
-        //TODO
-        
-        return 0;
+        int cantidad = 0;
+        int j = 0;
+        for(int i = 1; i < palabras.length; i++){
+            if(palabras[j] != palabras[i]){
+                cantidad++;
+            }
+            j++;
+        }
+        return cantidad;
     }
 
     /**
@@ -80,7 +86,7 @@ public class Texto {
      *  Indiferente mayúsculas y minúsculas
      */
     public int estaPalabra(String palabra) {
-        //TODO
+        
         
         
         return 0;
