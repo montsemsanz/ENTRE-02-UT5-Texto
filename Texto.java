@@ -44,7 +44,7 @@ public class Texto {
         int totalPalabras = total;
         for(int i = 0; i < total; i++)  {
             for(int j = 0; j < total; j++)  {
-                if(palabras[i].equals(palabras[j]))  {
+                if(palabras[i].equals(palabras[j]) && i!=j)  {
                     totalPalabras--;                
                 }
             }
@@ -78,7 +78,7 @@ public class Texto {
         String[] aux = linea.trim().split("[.\\,\\s]+");
         for(int i = 0; i < aux.length; i++)   {
             if(estaPalabra(aux[i]) >= 0)    {
-                palabras[i].incrementar();
+                palabras[estaPalabra(aux[i])].incrementar();
             }
             else if (!textoCompleto())  {
                 insertarPalabraEnOrden(aux[i]);
@@ -93,9 +93,8 @@ public class Texto {
      *  Indiferente mayúsculas y minúsculas
      */
     public int estaPalabra(String palabra) {
-        palabra = palabra.toLowerCase();
         for(int i = 0; i < total; i++)   {
-            if(palabras[i].getPalabra().equals(palabra))   {
+            if(palabras[i].getPalabra().equalsIgnoreCase(palabra))   {
                 return i;
             }
         }
@@ -132,9 +131,14 @@ public class Texto {
      *
      */
     public String toString() {
-        //TODO 
-
-        return null;
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i < total; i++)   {
+            if(i % 5 == 0)  {
+                sb.append("\n");
+            }
+            sb.append(String.format("%5s", palabras[i].toString()));
+        }
+        return sb.toString();
     }
 
     /**
