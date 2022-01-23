@@ -4,7 +4,7 @@
  *
  */
 public class Utilidades {
-    
+
     /**
      * Dada una cadena devuelve una nueva capitalizando los caracteres de
      * tres en tres de forma
@@ -14,14 +14,33 @@ public class Utilidades {
      * si la cadena recibida es "zapato" devuelve "ZAPato"
      * si la cadena recibida es "de" devuelve "DE"
      */
-    
+
     public static String capitalizarAlterna(String cadena) {
-        //TODO
-        
-        return null;
+        String str = "";
+        for(int i = 0; i < cadena.length(); i++){
+            for(int j = 1; j <= 3; j++){
+                if(i < cadena.length()){
+                    str += cadena.toUpperCase().charAt(i);
+                    i++;
+                }
+                else{
+                    return str;
+                }
+
+            }
+            for(int j = 1; j <= 3; j++){
+                if(i < cadena.length()){
+                    str += cadena.toLowerCase().charAt(i);;
+                    i++;
+                }
+                else{
+                    return str;
+                }
+            }
+        }
+        return str;
     }
-    
-    
+
     /**
      * Dada una cadena devuelve true si hay letras repetidas, false en otro caso
      * Es indiferente mayúsculas o minúsculas
@@ -31,13 +50,15 @@ public class Utilidades {
      *
      */
     public static boolean tieneLetrasRepetidas(String cadena) {
-        //TODO
-        
+        for(int i = 0; i < cadena.length(); i++){
+             String cadena2 = cadena.substring(i+1);
+            if(cadena2.toLowerCase().indexOf(cadena.toLowerCase().charAt(i)) != -1){
+            return true;
+            }
+        }
         return false;
     }
-    
-    
-    
+
     
     /**
      *
@@ -45,34 +66,32 @@ public class Utilidades {
     public static void main(String[] args) {
         String cadena = "zaPaTo";
         System.out.println(cadena + "\tCapitalizada alterna: " +
-                Utilidades.capitalizarAlterna(cadena));
+            Utilidades.capitalizarAlterna(cadena));
         cadena = "pez";
         System.out.println(cadena + "\tCapitalizada alterna: " +
-                Utilidades.capitalizarAlterna(cadena));
-        
+            Utilidades.capitalizarAlterna(cadena));
+
         cadena = "vaso";
         System.out.println(cadena + "\tCapitalizada alterna: " +
-                Utilidades.capitalizarAlterna(cadena));
-        
-        
+            Utilidades.capitalizarAlterna(cadena));
+
         cadena = "semana";
         System.out.println(cadena + "\tTiene letras repetidas?: " +
-                Utilidades.tieneLetrasRepetidas(cadena));
-        
+            Utilidades.tieneLetrasRepetidas(cadena));
+
         cadena = "quebrantos";
         System.out.println(cadena + "\tTiene letras repetidas?: " +
-                Utilidades.tieneLetrasRepetidas(cadena));
-        
+            Utilidades.tieneLetrasRepetidas(cadena));
+
         cadena = "y";
         System.out.println(cadena + "\tTiene letras repetidas?: " +
-                Utilidades.tieneLetrasRepetidas(cadena));
-        
+            Utilidades.tieneLetrasRepetidas(cadena));
+
         cadena = "de";
         System.out.println(cadena + "\tTiene letras repetidas?: " +
-                Utilidades.tieneLetrasRepetidas(cadena));
-        
-       
+            Utilidades.tieneLetrasRepetidas(cadena));
+
         
     }
-    
+
 }
