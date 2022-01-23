@@ -94,6 +94,21 @@ public class Texto {
      */
     public void addPalabras(String linea) {
 
+        String[] linea1 = linea.split(" ");
+        for(int i = 0; i < linea1.length; i++) {
+            if(estaPalabra(linea1[i]) < 0){
+                insertarPalabraEnOrden(linea1[i].toString());
+            }
+            else{
+                for(int j = 0; j < total; j++) {
+                    if(palabras[j].toString().compareTo(linea1[i]) == 0){
+                        palabras[j].incrementar();
+                    }
+                }
+
+            }
+
+        }
     }
 
     /**
@@ -110,7 +125,7 @@ public class Texto {
         palabra = palabra.toLowerCase();
         for(int i = 0; i < total; i++) {
             String palabraAux = palabras[i].toString().toLowerCase();
-            if(palabra.compareTo(palabraAux) >= 0) {
+            if(palabra.compareTo(palabraAux) == 0) {
                 posicion = i;
             }
             else{
@@ -184,11 +199,24 @@ public class Texto {
      */
     public String[] capitalizarAlterna() {
         String[] capitalizado = new String[total];
+        int contador = 0;
+
         for(int i = 0; i < total; i++) {
-            capitalizado[i] = palabras[i].toString();
+            String cadena = "";
+            for(int j = 0; j < palabras[i].toString().length(); j++) {
+                if(contador >= 3 && contador < 6) {
+                    cadena += palabras[i].toString().toLowerCase().indexOf(contador);
+                    contador++;   
+                }
+                else{
+                    cadena += palabras[i].toString().toUpperCase().indexOf(contador);
+                    contador++;
+                }
+            }
+            capitalizado[i] = cadena;
         }
 
-        return null;
+        return capitalizado;
     }
 
     /**
