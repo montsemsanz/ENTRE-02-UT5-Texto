@@ -13,17 +13,15 @@ import java.util.Scanner;
  *
  */
 public class Texto {
-
     private Palabra[] palabras;
     private int total;
-
     /**
      * Constructor
      * Crea el array al tamaño n
      * e inicializa adecuadamente el resto de atributos
      */
     public Texto(int n) {
-        //TODO
+        palabras = new Palabra[n];
     }
 
     /**
