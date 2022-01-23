@@ -58,15 +58,8 @@ public class Texto {
      */
     private boolean estaRepetida(Palabra palabra)
     {
-        for(int i = 0; i < total; i++) {
-            for(int j = 1; j < total; j++) {
-                if(palabras[i].equals(palabras[j])){
-                    return true;
-                }
-            }
 
-        }
-        return false;
+        return palabra.getFrecuencia() > 1;
 
     }
 
@@ -100,14 +93,10 @@ public class Texto {
                 insertarPalabraEnOrden(linea1[i].toString());
             }
             else{
-                for(int j = 0; j < total; j++) {
-                    if(palabras[j].toString().compareTo(linea1[i]) == 0){
-                        palabras[j].incrementar();
-                    }
-                }
+
+                palabras[estaPalabra(linea1[i])].incrementar();
 
             }
-
         }
     }
 
@@ -121,19 +110,15 @@ public class Texto {
         if(total == 0){
             return -1;
         }
-        int posicion = 0;
+
         palabra = palabra.toLowerCase();
         for(int i = 0; i < total; i++) {
-            String palabraAux = palabras[i].toString().toLowerCase();
+            String palabraAux = palabras[i].getPalabra().toLowerCase();
             if(palabra.compareTo(palabraAux) == 0) {
-                posicion = i;
-            }
-            else{
-                posicion = -1;
+                return i;
             }
         }
-
-        return posicion;
+        return -1;
     }
 
     /**
@@ -199,17 +184,18 @@ public class Texto {
      */
     public String[] capitalizarAlterna() {
         String[] capitalizado = new String[total];
-        int contador = 0;
 
         for(int i = 0; i < total; i++) {
             String cadena = "";
-            for(int j = 0; j < palabras[i].toString().length(); j++) {
-                if(contador >= 3 && contador < 6) {
-                    cadena += palabras[i].toString().toLowerCase().indexOf(contador);
+            int contador = 0;
+            for(int j = 0; j < palabras[i].getPalabra().length(); j++) {
+
+                if(contador >= 3 && contador < 6 && contador < palabras.length) {
+                    cadena += palabras[i].getPalabra().toLowerCase().charAt(contador);
                     contador++;   
                 }
                 else{
-                    cadena += palabras[i].toString().toUpperCase().indexOf(contador);
+                    cadena += palabras[i].getPalabra().toUpperCase().charAt(contador);
                     contador++;
                 }
             }
