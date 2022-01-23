@@ -216,6 +216,7 @@ public class Texto {
         for(int i = total - 1;i >= 0; i--){
             if(palabras[i].getFrecuencia() < frecuencia){
                 System.arraycopy(palabras, i + 1, palabras, i, total - i - 1);
+                total--;
                 borradas++;
             }
         }
