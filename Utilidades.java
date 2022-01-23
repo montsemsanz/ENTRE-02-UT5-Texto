@@ -54,13 +54,20 @@ public class Utilidades {
      *
      */
     public static boolean tieneLetrasRepetidas(String cadena) {
-        //TODO
-        
-        return false;
+        int a = 0;
+        String caracter = "";
+        String semiCadena = "";
+        boolean repetidos = false;
+        for(int i = 1; i <= cadena.length(); i++){
+            caracter = cadena.substring(a, i);
+            int x = cadena.substring(i).indexOf(caracter);
+            a++;
+            if(x >= 0){
+                repetidos = true;
+            }
+        }
+        return repetidos;
     }
-    
-    
-    
     
     /**
      *
