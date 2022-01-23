@@ -2,6 +2,8 @@
  * clase Utilidades 
  * incluye  métodos estáticos para trabajar con String
  *
+ *  @author Aimar Monreal
+ *
  */
 public class Utilidades {
     
@@ -16,9 +18,22 @@ public class Utilidades {
      */
     
     public static String capitalizarAlterna(String cadena) {
-        //TODO
-        
-        return null;
+        if (cadena.length() <= 3){
+            return cadena.toUpperCase();
+        }
+        String str = "";
+        int j = 0;
+        for(int i = 0; i < cadena.length(); i++){
+            if (j == 6){j = 0;}
+            if (j < 3){
+                str += cadena.toUpperCase().charAt(i);
+            }
+            else{
+                str += cadena.toLowerCase().charAt(i);
+            }
+            j++;
+        }
+        return str;
     }
     
     
@@ -31,8 +46,13 @@ public class Utilidades {
      *
      */
     public static boolean tieneLetrasRepetidas(String cadena) {
-        //TODO
-        
+        cadena = cadena.toLowerCase();
+        for(int i = 0; i < cadena.length(); i++){
+            char c = cadena.charAt(i);
+            if (cadena.substring(i+1).indexOf(c) != -1){
+                return true;
+            }
+        }
         return false;
     }
     
@@ -67,7 +87,7 @@ public class Utilidades {
         System.out.println(cadena + "\tTiene letras repetidas?: " +
                 Utilidades.tieneLetrasRepetidas(cadena));
         
-        cadena = "de";
+        cadena = "dee";
         System.out.println(cadena + "\tTiene letras repetidas?: " +
                 Utilidades.tieneLetrasRepetidas(cadena));
         

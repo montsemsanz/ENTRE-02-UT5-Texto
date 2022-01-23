@@ -10,6 +10,7 @@ import java.util.Scanner;
  *
  * El array guarda como máximo n palabras distintas
  *
+ *  @author Aimar Monreal
  *
  */
 public class Texto {
@@ -23,7 +24,7 @@ public class Texto {
      * e inicializa adecuadamente el resto de atributos
      */
     public Texto(int n) {
-        //TODO
+        palabras = new Palabra[n];
     }
 
     /**
@@ -31,9 +32,8 @@ public class Texto {
      * @return true si el texto está completo
      */
     public boolean textoCompleto() {
-        //TODO
         
-        return true;
+        return total == palabras.length;
     }
 
     /**
@@ -42,9 +42,8 @@ public class Texto {
      * el texto y guardadas en el array
      */
     public int totalPalabras() {
-        //TODO
-        
-        return 0;
+  
+        return total;
     }
 
     /**

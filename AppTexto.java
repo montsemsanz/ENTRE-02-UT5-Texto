@@ -5,6 +5,8 @@ import java.util.stream.IntStream;
  *  Punto de entrada a la aplicación 
  *
  *
+ * @author Aimar Monreal
+ *
  */
 public class AppTexto {
     
