@@ -71,8 +71,16 @@ public class Texto {
      * insertarPalabraEnOrden()
      */
     public void addPalabras(String linea) {
-        //TODO
-
+        String del = "[,\\.\\s]+";
+        String[] pala = linea.split(del);
+        for(int i = 0; i < pala.length; i++){
+            if(estaPalabra(pala[i]) == -1 && !textoCompleto()){
+                insertarPalabraEnOrden(pala[i]);
+            }
+            else if(estaPalabra(pala[i]) != -1){
+                palabras[estaPalabra(pala[i])].incrementar();
+            }
+        }
     }
     
      /**
