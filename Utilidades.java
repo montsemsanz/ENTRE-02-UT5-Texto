@@ -57,6 +57,7 @@ public class Utilidades {
         int a = 0;
         String caracter = "";
         String semiCadena = "";
+        cadena = cadena.toUpperCase();
         boolean repetidos = false;
         for(int i = 1; i <= cadena.length(); i++){
             caracter = cadena.substring(a, i);
