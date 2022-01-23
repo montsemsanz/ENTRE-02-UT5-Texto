@@ -75,8 +75,15 @@ public class Texto {
      * insertarPalabraEnOrden()
      */
     public void addPalabras(String linea) {
-        
-
+        String[] aux = linea.trim().split("[.\\,\\s]+");
+        for(int i = 0; i < aux.length; i++)   {
+            if(estaPalabra(aux[i]) >= 0)    {
+                palabras[i].incrementar();
+            }
+            else if (!textoCompleto())  {
+                insertarPalabraEnOrden(aux[i]);
+            }
+        }
     }
 
     /**
@@ -87,13 +94,12 @@ public class Texto {
      */
     public int estaPalabra(String palabra) {
         palabra = palabra.toLowerCase();
-        int pos = 0;
         for(int i = 0; i < total; i++)   {
-            if(palabras[i].getPalabra() == palabra)   {
-                pos = i;
+            if(palabras[i].getPalabra().equals(palabra))   {
+                return i;
             }
         }
-        return pos;
+        return -1;
     }
 
     /**
@@ -107,7 +113,7 @@ public class Texto {
      */
     private void insertarPalabraEnOrden(String palabra) {
         int i = total - 1;
-        while(i >= 0 && palabras[i].getPalabra().compareTo(palabra) > 0) {
+        while(i >= 0 && palabras[i].getPalabra().compareToIgnoreCase(palabra) > 0) {
             palabras[i + 1] = palabras[i];
             i--;
         }
