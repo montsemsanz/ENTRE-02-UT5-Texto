@@ -16,11 +16,34 @@ public class Utilidades {
      */
     
     public static String capitalizarAlterna(String cadena) {
-        //TODO
-        
-        return null;
+        int a = 3;
+        int x = 0;
+        String alternada = "";
+        for(int i = 0; i < cadena.length(); i = i + 3){
+            if(a > cadena.length()){
+                a = cadena.length();
+                if(x % 2 == 0){
+                    alternada += cadena.substring(i, a).toUpperCase();
+                }
+                else{
+                    alternada += cadena.substring(i, a).toLowerCase();
+                }
+                i = cadena.length();
+            }
+            else{
+                if(x % 2 == 0){
+                    alternada += cadena.substring(i, a).toUpperCase();
+                    x++;
+                }
+                else{
+                    alternada += cadena.substring(i, a).toLowerCase();
+                    x++;
+                }
+                a = a + 3;
+            }
+        }
+        return alternada;
     }
-    
     
     /**
      * Dada una cadena devuelve true si hay letras repetidas, false en otro caso
