@@ -35,7 +35,10 @@ public class Palabra {
      */
     public void incrementar() {
         frecuencia++;
-        
+    }
+    
+    public void setPalabra(String palabra){
+        this.palabra = palabra;
     }
     
     /**
