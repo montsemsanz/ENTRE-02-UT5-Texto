@@ -147,9 +147,7 @@ public class Texto {
      *      
      */
     public Palabra getPalabra(int p) {
-        //TODO 
-
-        return null;
+        return palabras[p];
     }
 
     /**
@@ -158,9 +156,11 @@ public class Texto {
      * capitalizadas de forma alterna
      */
     public String[] capitalizarAlterna() {
-        //TODO 
-
-        return null;
+        String[] capitalizarAlterna = new String[total];
+        for(int i = 0; i < total; i++)   {
+            capitalizarAlterna[i] = Utilidades.capitalizarAlterna(palabras[i].getPalabra());
+        }
+        return capitalizarAlterna;
     }
 
     /**
@@ -171,7 +171,8 @@ public class Texto {
     public String[] palabrasConLetrasRepetidas() {
         //TODO 
 
-        return null;    }
+        return null;    
+    }
 
     /**
      *
