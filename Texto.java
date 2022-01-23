@@ -41,7 +41,7 @@ public class Texto {
     public int totalPalabras() {
         int diferentes = 0;
         for(int i = 0;i < total;i++) {
-            for(int aux = 0; aux < total; aux++){
+            for(int aux = 1; aux < total; aux++){
                 if(!palabras[i].equals(palabras[aux])){
                     diferentes++;
                 }
@@ -73,7 +73,8 @@ public class Texto {
      * insertarPalabraEnOrden()
      */
     public void addPalabras(String linea) {
-        String arraycopia [] = linea.split(",");
+        String arraycopia [] = linea.split(" ");
+    
         for(int i = 0; i < arraycopia.length;i++){
             if(estaPalabra(arraycopia[i]) >= 0){
                 palabras[i].incrementar();
@@ -91,17 +92,14 @@ public class Texto {
      *  Indiferente mayúsculas y minúsculas
      */
     public int estaPalabra(String palabra) {
-        int posicion = 0;
+        int posicion = -1;
         if (total == 0){
-            System.out.println("esta vacia");
+            posicion = -1;
         }
         else{
-            for(int i = 0;i < palabras.length;i++) {
-                if(palabra.compareToIgnoreCase(palabras[i].toString()) >= 0)  {
-                    posicion = i;
-                }
-                else {
-                    posicion = -1;
+            for(int i = 0;i < total;i++) {
+                if(palabra.compareToIgnoreCase(palabras[i].getPalabra()) == 0)  {
+                    return posicion = i;
                 }
             }
         }
@@ -170,11 +168,13 @@ public class Texto {
      * capitalizadas de forma alterna
      */
     public String[] capitalizarAlterna() {
-        //TODO 
-
-        return null;
+        String [] arraycapailzado = new String [total];
+        for(int i = 0; i < total ; i++){
+            
+            
+        }
+        return arraycapailzado;
     }
-
     /**
      *
      * @return un array de cadenas con las palabras que tienen letras
