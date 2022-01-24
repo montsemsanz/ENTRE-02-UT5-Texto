@@ -32,8 +32,7 @@ public class Texto {
      * @return true si el texto está completo
      */
     public boolean textoCompleto() {
-        
-        
+
         return total == palabras.length;
     }
 
@@ -43,8 +42,7 @@ public class Texto {
      * el texto y guardadas en el array
      */
     public int totalPalabras() {
-        
-        
+
         return total;
     }
 
@@ -72,14 +70,14 @@ public class Texto {
      */
     public void addPalabras(String linea) {
         if(estaPalabra(linea) == -1 || total < palabras.length){
-            
+
             insertarPalabraEnOrden(linea);
-        
+
         }
 
     }
-    
-     /**
+
+    /**
      *  dada una palabra devuelve la posición en la que se
      *  encuentra en el array o -1 si no está
      *
@@ -87,16 +85,14 @@ public class Texto {
      */
     public int estaPalabra(String palabra) {
         int posicion = -1;
-        
+
         for(int i = 0; i <= total - 1; i++){
             if(palabras[i].getPalabra() == palabra){
                 posicion = i;
-                
+
             }
-            
-        
+
         }
-        
         return posicion;
     }
 
@@ -110,32 +106,26 @@ public class Texto {
      *
      */
     private void insertarPalabraEnOrden(String palabra) {
-           Palabra pal = new Palabra(palabra);
+        Palabra pal = new Palabra(palabra);
         for(int i = 0; i <= total - 1; i++){
             if(palabras[i].getPalabra().compareTo(palabra) < 0){
                 for(int j = total - 1; j >= i; j++){
-                
+
                     palabras[j + 1] = palabras[j];  
-                
+
                 }
                 palabras[i] = pal;
                 total++;
-            
+
             }
-            
-        
+
         
         }
-       
-       
-       
-       
+
        
        
     }
-
    
-
     /**
      * Representación textual del array de palabras
      * Cada palabra y su frecuencia de aparición
@@ -148,47 +138,39 @@ public class Texto {
      */
     public String toString() {
         //TODO 
-        
-        
-        
+
         
         return null;
-
     }
-
     /**
      *  Devuelve la palabra de la posición p
      *  Si p es incorrecto se devuelve null
      *      
      */
     public Palabra getPalabra(int p) {
-         
+
         if(p < 0 || p > total){
             System.out.println("La posicion es incorrecta");
             return null;            
         }
-        
-        
+
         
         return palabras[p];
 
     }
 
-    
     /**
      *
      * @return un array de cadenas con las palabras del texto
      * capitalizadas de forma alterna
      */
     public String[] capitalizarAlterna() {
-       String[] capitalizados = new String[total];
-        
+        String[] capitalizados = new String[total];
+
         for(int i = 0; i <= total - 1; i++){
             capitalizados[i] = Utilidades.capitalizarAlterna(palabras[i].getPalabra());
-            
-        
+
         }        
-        
         
         return capitalizados;
 
@@ -200,14 +182,20 @@ public class Texto {
      * repetidas
      */
     public String[] palabrasConLetrasRepetidas() {
-        //TODO 
-        
-        
-        
-        
-        return null;    }
 
-     /**
+        String[] repetidos = new String[total];
+
+        for(int i = 0; i <= total - 1; i++){
+            if(Utilidades.tieneLetrasRepetidas(palabras[i].getPalabra())){
+                repetidos[i] = palabras[i].getPalabra();
+            }
+
+        }        
+
+        return repetidos;   
+    }
+
+    /**
      *
      * @return un array con la frecuencia de palabras de cada longitud
      * La palabra más larga consideraremos de longitud 15
@@ -215,13 +203,11 @@ public class Texto {
      */
     public int[] calcularFrecuenciaLongitud() {
         //TODO 
-        
-        
-        
+
         
         return null;
     }
-    
+
     /**
      *
      * @param frecuencia se borra del array palabras aquellas de frecuencia
@@ -230,14 +216,11 @@ public class Texto {
      */
     public int borrarDeFrecuenciaMenor(int frecuencia) {
         //TODO 
-        
-        
-        
+
         
         return 0;
     }
 
-   
 
     /**
      *  Lee de un fichero un texto formado por una
