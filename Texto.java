@@ -41,13 +41,13 @@ public class Texto {
     public int totalPalabras() {
         int suma = 0;
 
-        for (int i = 0; i < total - 1; i++) {
-            for (int j = i + 1; j < total; j++) {
-                if (!palabras[i].equals(palabras[j])) {
-                    suma++;
-                }
-            }
-        }
+        // for (int i = 0; i < total; i++) {
+        // for (int j = i; j < total; j++) {
+        // if (!palabras[i].getPalabra().equals(palabras[j + 1].getPalabra())) {
+        // suma++;
+        // }
+        // }
+        // }
 
         return suma;
     }
@@ -75,8 +75,8 @@ public class Texto {
      * insertarPalabraEnOrden()
      */
     public void addPalabras(String linea) {
-        //TODO
-
+        palabras[total] = new Palabra(linea);
+        total++;
     }
 
     /**
@@ -86,9 +86,15 @@ public class Texto {
      *  Indiferente mayúsculas y minúsculas
      */
     public int estaPalabra(String palabra) {
-        
-
-        return 0;
+        int pos = -1;
+        int i = 0;
+        while (pos == -1 && i < total) {
+            if (palabras[i].getPalabra().equalsIgnoreCase(palabra)) {
+                pos = i;
+            }
+            i++;
+        }
+        return pos;
     }
 
     /**
@@ -103,10 +109,8 @@ public class Texto {
     private void insertarPalabraEnOrden(String palabra) {
         //TODO
 
-       
-       
     }
-   
+
     /**
      * Representación textual del array de palabras
      * Cada palabra y su frecuencia de aparición
@@ -120,9 +124,9 @@ public class Texto {
     public String toString() {
         //TODO 
 
-        
         return null;
     }
+
     /**
      *  Devuelve la palabra de la posición p
      *  Si p es incorrecto se devuelve null
@@ -131,10 +135,9 @@ public class Texto {
     public Palabra getPalabra(int p) {
         //TODO 
 
-        
         return null;
     }
-    
+
     /**
      *
      * @return un array de cadenas con las palabras del texto
@@ -143,9 +146,9 @@ public class Texto {
     public String[] capitalizarAlterna() {
         //TODO 
 
-        
         return null;
     }
+
     /**
      *
      * @return un array de cadenas con las palabras que tienen letras
@@ -154,8 +157,8 @@ public class Texto {
     public String[] palabrasConLetrasRepetidas() {
         //TODO 
 
-        
         return null;    }
+
     /**
      *
      * @return un array con la frecuencia de palabras de cada longitud
@@ -165,7 +168,6 @@ public class Texto {
     public int[] calcularFrecuenciaLongitud() {
         //TODO 
 
-        
         return null;
     }
 
@@ -178,10 +180,8 @@ public class Texto {
     public int borrarDeFrecuenciaMenor(int frecuencia) {
         //TODO 
 
-        
         return 0;
     }
-
 
     /**
      *  Lee de un fichero un texto formado por una
