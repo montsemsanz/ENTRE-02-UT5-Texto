@@ -44,13 +44,11 @@ public class Utilidades {
      *
      */
     public static boolean tieneLetrasRepetidas(String cadena) {
-        // Pasamos a Mayusculas
-        cadena = cadena.toUpperCase();
-        for(int k = 0; k < cadena.length(); k++)   {
-            for(int l = 0; l < cadena.length(); l++)    {
-                if((k != l) && (cadena.charAt(k) == cadena.charAt(l)))    {
-                    return true;
-                }
+        cadena = cadena.toLowerCase();
+        for(int i = 0; i < cadena.length(); i++){
+            char aux = cadena.charAt(i);
+            if (cadena.substring(i+1).indexOf(aux) != -1){
+                return true;
             }
         }
         return false;
