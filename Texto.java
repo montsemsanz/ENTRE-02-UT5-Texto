@@ -137,10 +137,15 @@ public class Texto {
      *
      */
     public String toString() {
-        //TODO 
-
+        StringBuilder strb = new StringBuilder();
         
-        return null;
+        for(int i = 0; i <= total - 1; i++){
+        
+            strb.append(palabras[i].toString()).append("\t");
+        
+        }
+        
+        return strb.toString();
     }
     /**
      *  Devuelve la palabra de la posición p
