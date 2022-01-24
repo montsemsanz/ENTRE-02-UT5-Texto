@@ -11,6 +11,8 @@ import java.util.Scanner;
  * El array guarda como máximo n palabras distintas
  *
  *
+ *  @-Author-Alejandro Torreguitart
+ *
  */
 public class Texto {
     private Palabra[] palabras;
@@ -152,7 +154,9 @@ public class Texto {
      *      
      */
     public Palabra getPalabra(int p) {
-
+        if(p >= 0 && p < palabras.length){
+            return palabras[p];
+        }
         return null;
     }
 
@@ -172,6 +176,7 @@ public class Texto {
      * @return un array de cadenas con las palabras que tienen letras
      * repetidas
      */
+    
     public String[] palabrasConLetrasRepetidas() {
         //TODO 
         return null;    }
@@ -183,9 +188,12 @@ public class Texto {
      *
      */
     public int[] calcularFrecuenciaLongitud() {
-        //TODO 
-
-        return null;
+        int[] frecuencias = new int[15];
+        for(int i = 0 ; i < total ; i++){
+            String p = palabras[i].getPalabra();
+            frecuencias[p.length() - 1] += 1;
+        }
+        return frecuencias;
     }
 
     /**
@@ -196,7 +204,7 @@ public class Texto {
      */
     public int borrarDeFrecuenciaMenor(int frecuencia) {
         //TODO 
-
+        
         return 0;
     }
 
