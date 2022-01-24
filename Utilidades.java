@@ -16,9 +16,29 @@ public class Utilidades {
      */
     
     public static String capitalizarAlterna(String cadena) {
-        //TODO
-        
-        return null;
+        String str = "";
+        String alt = "";
+        for (int i = 0; i < cadena.length(); i += 3) {
+            if (i % 2 == 0 && i % 3 == 0) {
+                alt = cadena.substring(i).toUpperCase();
+                if (alt.length() > 3) {
+                    str += alt.substring(0, 3);
+                }
+                else{
+                    str += alt;
+                }
+            }
+            else {
+                alt = cadena.substring(i).toLowerCase();
+                if (alt.length() > 3) {
+                    str += alt.substring(0, 3);
+                }
+                else{
+                    str += alt;
+                }
+            }
+        }
+        return str;
     }
     
     
@@ -31,8 +51,13 @@ public class Utilidades {
      *
      */
     public static boolean tieneLetrasRepetidas(String cadena) {
-        //TODO
-        
+        for (int i = 0; i < cadena.length(); i++) {
+            for (int j = i + 1; j < cadena.length(); j++) {
+                if (cadena.substring(i, i + 1).equalsIgnoreCase(cadena.substring(j, j + 1))) {
+                    return true;
+                }
+            }
+        }
         return false;
     }
     
