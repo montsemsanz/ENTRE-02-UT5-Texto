@@ -162,12 +162,15 @@ public class Texto {
      *      
      */
     public Palabra getPalabra(int p) {
-        //TODO 
+         
+        if(p < 0 || p > total){
+            System.out.println("La posicion es incorrecta");
+            return null;            
+        }
         
         
         
-        
-        return null;
+        return palabras[p];
 
     }
 
@@ -178,7 +181,7 @@ public class Texto {
      * capitalizadas de forma alterna
      */
     public String[] capitalizarAlterna() {
-       //TODO 
+       String[] capitalizados = new String[total];
         
         
         
