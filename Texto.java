@@ -41,9 +41,7 @@ public class Texto {
      * el texto y guardadas en el array
      */
     public int totalPalabras() {
-        //TODO
-        
-        return 0;
+        return total;
     }
 
     /**
@@ -101,7 +99,7 @@ public class Texto {
      */
     public void insertarPalabraEnOrden(String palabra) {
         int i = total - 1;
-        while (i >= 0 && (palabras[i].getPalabra().compareTo(palabra)>1)) {
+        while (i >= 0 && (palabras[i].getPalabra().compareToIgnoreCase(palabra)>0)) {
             palabras[i + 1] = palabras[i];
             i -- ;
         }
@@ -127,12 +125,17 @@ public class Texto {
      *
      */
     public String toString() {
-        //TODO 
+        StringBuilder sb = new StringBuilder();
+        // for(int i = 0;i<total;i++){
+            // for(int j = 0;i<5;j++){
+                // sb.append(palabras.toString());
+            // }
+            // sb.append("\n");
+        // }
         
         
         
-        
-        return null;
+        return sb.toString();
 
     }
 
@@ -142,12 +145,12 @@ public class Texto {
      *      
      */
     public Palabra getPalabra(int p) {
-        //TODO 
-        
-        
-        
-        
-        return null;
+        if(p>= 0 && p < total){
+            return palabras[p];
+        }
+        else{
+            return null;
+        }
 
     }
 
