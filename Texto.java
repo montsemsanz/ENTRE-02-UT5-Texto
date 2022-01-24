@@ -183,10 +183,14 @@ public class Texto {
     public String[] capitalizarAlterna() {
        String[] capitalizados = new String[total];
         
+        for(int i = 0; i <= total - 1; i++){
+            capitalizados[i] = Utilidades.capitalizarAlterna(palabras[i].getPalabra());
+            
+        
+        }        
         
         
-        
-        return null;
+        return capitalizados;
 
     }
 
