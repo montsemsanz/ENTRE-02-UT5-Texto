@@ -228,14 +228,16 @@ public class Texto {
         int cantBorradas = 0;
         int i = 0;
         while(i < total){
-            if(palabras[i].getFrecuencia() < 3){
-                for(int j = i + 1; j < i; i++){
-                    palabras[i - 1] = palabras[i];
+            if(palabras[i].getFrecuencia() < frecuencia){
+                for(int j = i + 1; j < total; j++){
+                    palabras[j - 1] = palabras[j];
                 }
                 cantBorradas++;
                 total--;
             }
-            i++;
+            else{
+                i++;
+            }
         }
         return cantBorradas;
     }
