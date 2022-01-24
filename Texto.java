@@ -64,11 +64,23 @@ public class Texto {
      * insertarPalabraEnOrden()
      */
     public void addPalabras(String linea) {
-        String ESPACIO = " "; 
-        String str =  "[,.EPSPACIO]+" ;
-        
+        String str = "[,\\.\\s]+" ;
+        String[] p = linea.split("[,\\.\\s]+");
+        for(int i = 0 ; i < p.length ; i++){
+            if(i < p.length && !textoCompleto()){
+                String pal = p[i];
+                Palabra pa = new Palabra(pal);
+                if(estaPalabra(pal) >= 0){
+                    insertarPalabraEnOrden(pal);
+                    pa.incrementar();   
+                }
+                else{
+                    insertarPalabraEnOrden(pal);
+                }
+            }
+        }
     }
-    
+
     /**
      *  dada una palabra devuelve la posición en la que se
      *  encuentra en el array o -1 si no está
@@ -77,7 +89,7 @@ public class Texto {
      */
     public int estaPalabra(String palabra) {
         for(int i = 0 ; i < total ; i++){
-            if(palabras[i].equals(palabra)){
+            if(palabras[i].getPalabra().compareToIgnoreCase(palabra) == 0){
                 return i;
             }
         }
@@ -93,19 +105,16 @@ public class Texto {
      *                no está y que es posible añadirla
      *
      */
-    // Cambiar metodo de public a private
-    public void insertarPalabraEnOrden(String palabra) {
+    private void insertarPalabraEnOrden(String palabra) {
         Palabra p = new Palabra(palabra);
-        if(!textoCompleto()){
-            int i = total - 1;
-            while(i >= 0 && palabras[i].getPalabra().compareToIgnoreCase(p.getPalabra()) >= 0){
-                palabras[i + 1] = palabras[i];
-                palabras[i] = new Palabra(palabra);
-                i--;
-            }
-            palabras[i + 1] = new Palabra(palabra);
-            total++;
+        int i = total - 1;
+        while(i >= 0 && palabras[i].getPalabra().compareToIgnoreCase(p.getPalabra()) >= 0){
+            palabras[i + 1] = palabras[i];
+            palabras[i] = new Palabra(palabra);
+            i--;
         }
+        palabras[i + 1] = new Palabra(palabra);
+        total++;
     }
 
     /**
@@ -118,9 +127,22 @@ public class Texto {
      *
      *
      */
-    public String toString() {
-        //TODO 
 
+    public String toString() {
+
+        for(int i = 0 ; i < total ; i++){
+            int filas = 0;
+            while(filas < 5){
+                int col = 0;
+                while(col < 5){
+                    palabras[i].toString();
+                    col++;
+                }
+                System.out.println("");
+                filas++;
+            }
+
+        }
         return null;
     }
 
@@ -152,7 +174,6 @@ public class Texto {
      */
     public String[] palabrasConLetrasRepetidas() {
         //TODO 
-
         return null;    }
 
     /**
