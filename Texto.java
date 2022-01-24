@@ -71,11 +71,12 @@ public class Texto {
         String[] nuevo = str.split(delimitadores);
 
         for(int i = 0;i < nuevo.length;i++){
-            if(estaPalabra(nuevo[i]) >= 0){
-                palabras[estaPalabra(nuevo[i])].incrementar();
+            int a = estaPalabra(nuevo[i]);
+            if(a >= 0){
+                palabras[a].incrementar();
 
             }
-            else if(estaPalabra(nuevo[i]) == -1 && !textoCompleto()){
+            else if(!textoCompleto()){
                 insertarPalabraEnOrden(nuevo[i]);
             }
         }
