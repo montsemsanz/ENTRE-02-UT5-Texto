@@ -163,7 +163,11 @@ public class Texto {
      * capitalizadas de forma alterna
      */
     public String[] capitalizarAlterna() {
-        
+        String[] capitalizadas = new String[total];
+        for(int i = 0; i < capitalizadas.length; i++){
+            capitalizadas[i] = Utilidades.capitalizarAlterna(palabras[i].getPalabra());
+        }
+        return capitalizadas;
 
     }
 
@@ -173,7 +177,21 @@ public class Texto {
      * repetidas
      */
     public String[] palabrasConLetrasRepetidas() {
-        
+        int cant = 0;
+        int j = 0;
+        for(int i = 0; i < total; i++){
+            if(Utilidades.tieneLetrasRepetidas(palabras[i].getPalabra())){
+                cant++;
+            }
+        }
+        String[] repetidas = new String[cant];
+        for(int i = 0; i < total; i++){
+            if(Utilidades.tieneLetrasRepetidas(palabras[i].getPalabra())){
+                repetidas[j] = palabras[i].getPalabra();
+                j++;
+            }
+        }
+        return repetidas;
     }
 
     /**
