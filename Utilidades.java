@@ -17,9 +17,35 @@ public class Utilidades {
      */
 
     public static String capitalizarAlterna(String cadena) {
-        //TODO
+        String cad = "";
+        int i = 1;
+        while(cadena.length() >= 3){
+            String a = cadena.substring(0,3);
+            cadena = cadena.substring(3);
+            cad += escribirCadena(i,a);
+            i++;
+        }
+        cad += escribirCadena(i,cadena);
 
-        return null;
+        return cad;
+    }
+
+    /**
+     * Método auxiliar de ayuda para escribir una cadena en mayúsculas o minusculas dependiendo
+     * de si el numéro que se le pasa es par o impar.
+     * @ param cualquier numero , una cadena cualquiera
+     * @ return la cadena escrita en mayusculas o minusculas.
+     */
+    private static String escribirCadena(int i,String cadena)
+    {
+        String str = "";
+        if(i % 2 == 0){
+            str += cadena.toLowerCase();
+        }
+        else{
+            str += cadena.toUpperCase();
+        }
+        return str;
     }
 
     /**
@@ -44,36 +70,36 @@ public class Utilidades {
         return false;
     }
 
-    /**
-     *
-     */
-    public static void main(String[] args) {
-        String cadena = "zaPaTo";
-        System.out.println(cadena + "\tCapitalizada alterna: " +
-            Utilidades.capitalizarAlterna(cadena));
-        cadena = "pez";
-        System.out.println(cadena + "\tCapitalizada alterna: " +
-            Utilidades.capitalizarAlterna(cadena));
+    // /**
+    // *
+    // */
+    // public static void main(String[] args) {
+    // String cadena = "zaPaTo";
+    // System.out.println(cadena + "\tCapitalizada alterna: " +
+    // Utilidades.capitalizarAlterna(cadena));
+    // cadena = "pez";
+    // System.out.println(cadena + "\tCapitalizada alterna: " +
+    // Utilidades.capitalizarAlterna(cadena));
 
-        cadena = "vaso";
-        System.out.println(cadena + "\tCapitalizada alterna: " +
-            Utilidades.capitalizarAlterna(cadena));
+    // cadena = "vaso";
+    // System.out.println(cadena + "\tCapitalizada alterna: " +
+    // Utilidades.capitalizarAlterna(cadena));
 
-        cadena = "semana";
-        System.out.println(cadena + "\tTiene letras repetidas?: " +
-            Utilidades.tieneLetrasRepetidas(cadena));
+    // cadena = "semana";
+    // System.out.println(cadena + "\tTiene letras repetidas?: " +
+    // Utilidades.tieneLetrasRepetidas(cadena));
 
-        cadena = "quebrantos";
-        System.out.println(cadena + "\tTiene letras repetidas?: " +
-            Utilidades.tieneLetrasRepetidas(cadena));
+    // cadena = "quebrantos";
+    // System.out.println(cadena + "\tTiene letras repetidas?: " +
+    // Utilidades.tieneLetrasRepetidas(cadena));
 
-        cadena = "y";
-        System.out.println(cadena + "\tTiene letras repetidas?: " +
-            Utilidades.tieneLetrasRepetidas(cadena));
+    // cadena = "y";
+    // System.out.println(cadena + "\tTiene letras repetidas?: " +
+    // Utilidades.tieneLetrasRepetidas(cadena));
 
-        cadena = "de";
-        System.out.println(cadena + "\tTiene letras repetidas?: " +
-            Utilidades.tieneLetrasRepetidas(cadena));
+    // cadena = "de";
+    // System.out.println(cadena + "\tTiene letras repetidas?: " +
+    // Utilidades.tieneLetrasRepetidas(cadena));
 
-    }
+    // }
 }

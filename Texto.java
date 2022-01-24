@@ -160,7 +160,8 @@ public class Texto {
      */
     public String[] capitalizarAlterna() {
         //TODO 
-
+        String[] capitalizadas = new String[total];
+    
         return null;
     }
 
