@@ -16,21 +16,48 @@ public class Utilidades {
      */
 
     public static String capitalizarAlterna(String cadena) {
-        String secuencia ="";
-        int contador = 0;
+        String alterna = "";
+        int contador1 = 0;
+        int contador2 = 0;
+
         for(int i = 0; i < cadena.length(); i++) {
-            if(contador >= 3 && contador < 6 && contador < cadena.length()) {
-                secuencia += cadena.toLowerCase().charAt(i);
+
+            if(contador1 < 3) {
+                alterna += cadena.toUpperCase().charAt(i);
+                contador1++;
+                if(contador2 == 3) {
+                    contador2 = 0;
+                }
+            }
+            else {
+                if(contador2 < 3){
+                    alterna += cadena.toLowerCase().charAt(i);
+                    contador2++;
+                }
+                else{
+                    contador1 = 0;
+                    alterna += cadena.toUpperCase().charAt(i);
+                    contador1++;
+                }
 
             }
-            else{
-                secuencia += cadena.toUpperCase().charAt(i);
 
-            }
-            contador++;
         }
+        // String secuencia ="";
+        // int contador = 0;
+        // for(int i = 0; i < cadena.length(); i++) {
+        // if(contador >= 3 && contador < 6 && contador < cadena.length()) {
+        // secuencia += cadena.toLowerCase().charAt(i);
 
-        return secuencia;
+        // }
+        // else{
+        // secuencia += cadena.toUpperCase().charAt(i);
+
+        // }
+        // contador++;
+        // }
+
+        return alterna;
     }
 
     /**
