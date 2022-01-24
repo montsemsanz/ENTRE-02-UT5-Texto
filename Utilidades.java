@@ -43,7 +43,9 @@ public class Utilidades {
             }
 
         }
+        return alterna;
         // String secuencia ="";
+
         // int contador = 0;
         // for(int i = 0; i < cadena.length(); i++) {
         // if(contador >= 3 && contador < 6 && contador < cadena.length()) {
@@ -57,9 +59,7 @@ public class Utilidades {
         // contador++;
         // }
 
-        return alterna;
     }
-
     /**
      * Dada una cadena devuelve true si hay letras repetidas, false en otro caso
      * Es indiferente mayúsculas o minúsculas

@@ -237,7 +237,7 @@ public class Texto {
      *
      */
     public int[] calcularFrecuenciaLongitud() {
-        int[] frecuencias = new int[15];
+        int[] frecuencias = new int[total];
         int j = 0;
         for(int i = 0; i < frecuencias.length; i++){
             frecuencias[j] = palabras[i].getFrecuencia();
