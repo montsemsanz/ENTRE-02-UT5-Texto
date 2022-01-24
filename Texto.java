@@ -1,6 +1,5 @@
 import java.util.Arrays;
 import java.util.Scanner;
-
 /**
  * Un objeto de esta clase guarda en un array las diferentes
  * palabras que hay en un texto
@@ -44,7 +43,7 @@ public class Texto {
         int totalDiferentes = 0;
         for (int i = 0; i < total; i++) {
             for (int j = 0; j < total; j++) {
-                if (!palabras[i].equals(palabras[j])) {
+                if (!palabras[i].equals(palabras[j]) && j != i) {
                     totalDiferentes++;
                 }
             }
@@ -84,13 +83,15 @@ public class Texto {
      *  dada una palabra devuelve la posición en la que se
      *  encuentra en el array o -1 si no está
      *
-     *  Indiferente mayúsculas y minúsculas
+     *  Indiferente mayúsculas y minúsculas 
      */
     public int estaPalabra(String palabra) {
-        //TODO
-        
-        
-        return 0;
+        for (int i = 0; i < total; i++){
+            if (palabra.equals(palabras[i].getPalabra()) ){
+                return i;
+            }
+        }
+        return -1;
     }
 
     /**
@@ -103,13 +104,16 @@ public class Texto {
      *
      */
     private void insertarPalabraEnOrden(String palabra) {
-       //TODO
-       
-       
-       
-       
-       
-       
+         int j = total - 1;
+        while (j >= 0 && palabras[j].getPalabra().compareTo(palabra) > 0) {
+            palabras[j + 1] = palabras[j];
+            j--;
+        }
+        Palabra p = new Palabra(palabra);
+        Palabra[] aux = new Palabra[total];
+        aux[j + 1] = p;
+        total++;
+
     }
 
    
@@ -140,10 +144,9 @@ public class Texto {
      *      
      */
     public Palabra getPalabra(int p) {
-        //TODO 
-        
-        
-        
+        if (p >= 0 && p <= total) {
+            return palabras[p];
+        }
         
         return null;
 
@@ -171,12 +174,15 @@ public class Texto {
      * repetidas
      */
     public String[] palabrasConLetrasRepetidas() {
-        //TODO 
-        
-        
-        
-        
-        return null;    }
+        String[] repetidas = new String[total];
+        int j = 0;
+        for (int i = 0; i < total; i++ ){
+            if (Utilidades.tieneLetrasRepetidas(String.valueOf(palabras[i]))) {
+                repetidas[j] = String.valueOf(palabras[i]);
+            }
+        }
+        return repetidas;    
+    }
 
      /**
      *

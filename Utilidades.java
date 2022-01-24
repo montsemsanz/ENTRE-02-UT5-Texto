@@ -31,12 +31,17 @@ public class Utilidades {
      *
      */
     public static boolean tieneLetrasRepetidas(String cadena) {
+        for (int i = 0; i < cadena.length(); i++){
+            for (int j = 0; j< cadena.length(); j++){
+                if (cadena.substring(i).equals(cadena.substring(j)) && j != i) {
+                return true;
+            }
+            }
+        }
         
         
         return false;
     }
-    
-    
     
     
     /**
