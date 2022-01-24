@@ -74,7 +74,6 @@ public class Texto {
      */
     public void addPalabras(String linea) {
         String arraycopia [] = linea.split(" ");
-    
         for(int i = 0; i < arraycopia.length;i++){
             if(estaPalabra(arraycopia[i]) >= 0){
                 palabras[i].incrementar();
@@ -93,12 +92,9 @@ public class Texto {
      */
     public int estaPalabra(String palabra) {
         int posicion = -1;
-        if (total == 0){
-            posicion = -1;
-        }
-        else{
+        {
             for(int i = 0;i < total;i++) {
-                if(palabra.compareToIgnoreCase(palabras[i].getPalabra()) == 0)  {
+                if(palabra.equalsIgnoreCase(palabras[i].getPalabra()))  {
                     return posicion = i;
                 }
             }
@@ -228,7 +224,7 @@ public class Texto {
         while (x < total){
             if(palabras[x].getFrecuencia() < frecuencia){
                 for(int j = x +1 ; j < total; j++) {
-                    palabras[j - 1] = palabras[j];
+                    System.arraycopy(palabras,x + 1,palabras,x,total - x -1);
                     totalborradas++;
                     total--;
                 }

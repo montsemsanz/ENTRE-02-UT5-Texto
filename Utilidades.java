@@ -16,9 +16,24 @@ public class Utilidades {
      */
 
     public static String capitalizarAlterna(String cadena) {
-        //TODO
-        
-        return null;
+        int Amayusculas = 0;
+        int Aminisculas = 0;
+        String carcater =  "";
+        for (int i = 0; i < cadena.length();i++){
+            if(Amayusculas <= 3) {
+                char firstCharacter = cadena.toUpperCase().charAt(i);
+                carcater += firstCharacter;
+                Aminisculas = 0;
+                Amayusculas++;
+            }
+            else if(Aminisculas <= 3){
+                char firstCharacter = cadena.toLowerCase().charAt(i);
+                carcater += firstCharacter;
+                Amayusculas = 0;
+                Aminisculas++;
+            }
+        }
+        return carcater;
     }
 
     /**
@@ -75,7 +90,5 @@ public class Utilidades {
         System.out.println(cadena + "\tTiene letras repetidas?: " +
             Utilidades.tieneLetrasRepetidas(cadena));
 
-        
     }
-
 }
