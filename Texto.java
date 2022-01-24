@@ -110,7 +110,7 @@ public class Texto {
     private void insertarPalabraEnOrden(String palabra) {
         Palabra pal = new Palabra(palabra);
         int i = total - 1;
-        while(i >= 0 && palabras[i].getPalabra().compareTo(palabra) > 1){
+        while(i >= 0 && palabras[i].getPalabra().compareToIgnoreCase(palabra) > 0){
             palabras[i + 1] = palabras[i];
             i--;
         }
