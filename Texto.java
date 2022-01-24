@@ -131,10 +131,14 @@ public class Texto {
      *
      */
     public String toString() {
-        //TODO 
         StringBuilder sb = new StringBuilder();
-        
-        return null;
+        for(int i = 0; i < total; i++){
+            sb.append(palabras[i].toString());
+            if((i + 1) % 5 == 0){
+                sb.append("\n");
+            }
+        }
+        return sb.toString();
     }
 
     /**
