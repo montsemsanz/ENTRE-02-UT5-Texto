@@ -130,9 +130,17 @@ public class Texto {
      *
      */
     public String toString() {
-        
-        return null;
-
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i < total; i++){
+            if(i % 5 == 0){
+                sb.append("\n");
+            }
+            String frecuencia = "(" + palabras[i].getFrecuencia() + ")";
+            sb.append(String.format("%13s", palabras[i].getPalabra()));
+            sb.append(String.format("%6s", frecuencia));
+        }
+        System.out.println(sb.toString());
+        return sb.toString();
     }
 
     /**
@@ -155,12 +163,7 @@ public class Texto {
      * capitalizadas de forma alterna
      */
     public String[] capitalizarAlterna() {
-       //TODO 
         
-        
-        
-        
-        return null;
 
     }
 
@@ -170,26 +173,17 @@ public class Texto {
      * repetidas
      */
     public String[] palabrasConLetrasRepetidas() {
-        //TODO 
         
-        
-        
-        
-        return null;    }
+    }
 
-     /**
+    /**
      *
      * @return un array con la frecuencia de palabras de cada longitud
      * La palabra más larga consideraremos de longitud 15
      *
      */
     public int[] calcularFrecuenciaLongitud() {
-        //TODO 
         
-        
-        
-        
-        return null;
     }
     
     /**
@@ -199,15 +193,10 @@ public class Texto {
      * @return el n de palabras borradas
      */
     public int borrarDeFrecuenciaMenor(int frecuencia) {
-        //TODO 
+        for(int i = 0; i < ){
         
-        
-        
-        
-        return 0;
+        }
     }
-
-   
 
     /**
      *  Lee de un fichero un texto formado por una

@@ -7,36 +7,35 @@ import java.util.stream.IntStream;
  *
  */
 public class AppTexto {
-    
     public static void main(String[] args) {
-        
-        
-            Texto texto = new Texto(Integer.parseInt(args[1]));
-            texto.leerDeFichero(args[0]);
+            if(args.length == 2){
+                Texto texto = new Texto(Integer.parseInt(args[1]));
+                texto.leerDeFichero(args[0]);
             
-            System.out.println(texto.toString());
+                System.out.println(texto.toString());
             
-            separador();
+                separador();
             
-            testCapitalizarAlterna(texto);
-            separador();
+                testCapitalizarAlterna(texto);
+                separador();
             
-            testPalabrasConLetrasRepetidas(texto);
-            separador();
+                testPalabrasConLetrasRepetidas(texto);
+                separador();
             
-            testCalcularFrecuenciaLongitud(texto);
-            separador();
+                testCalcularFrecuenciaLongitud(texto);
+                separador();
             
-            testBorrarDeFrecuenciaMenor(texto);
-            separador();
-            
-            testCalcularFrecuenciaLongitud(texto);
-            separador();
-            
-            
-   
-        
-        
+                testBorrarDeFrecuenciaMenor(texto);
+                separador();
+                
+                testCalcularFrecuenciaLongitud(texto);
+                separador();
+
+            }
+            else{
+                System.out.println("Error en nº argumentos");
+                System.out.println("Usage:java AppTexto <fichero> <n>");
+            }
     }
     
     
