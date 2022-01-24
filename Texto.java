@@ -82,10 +82,18 @@ public class Texto {
      *  Indiferente mayúsculas y minúsculas
      */
     public int estaPalabra(String palabra) {
-        //TODO
+        int posicion = 0;
         
+        for(int i = 0; i <= total - 1; i++){
+            if(palabras[i].getPalabra() == palabra){
+                posicion = i;
+                
+            }
+            
         
-        return 0;
+        }
+        
+        return posicion;
     }
 
     /**
