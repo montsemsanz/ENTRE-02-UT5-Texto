@@ -71,7 +71,11 @@ public class Texto {
      * insertarPalabraEnOrden()
      */
     public void addPalabras(String linea) {
-        //TODO
+        if(estaPalabra(linea) == -1 || total < palabras.length){
+            
+            insertarPalabraEnOrden(linea);
+        
+        }
 
     }
     
@@ -82,7 +86,7 @@ public class Texto {
      *  Indiferente mayúsculas y minúsculas
      */
     public int estaPalabra(String palabra) {
-        int posicion = 0;
+        int posicion = -1;
         
         for(int i = 0; i <= total - 1; i++){
             if(palabras[i].getPalabra() == palabra){
@@ -106,7 +110,22 @@ public class Texto {
      *
      */
     private void insertarPalabraEnOrden(String palabra) {
-       //TODO
+           Palabra pal = new Palabra(palabra);
+        for(int i = 0; i <= total - 1; i++){
+            if(palabras[i].getPalabra().compareTo(palabra) < 0){
+                for(int j = total - 1; j >= i; j++){
+                
+                    palabras[j + 1] = palabras[j];  
+                
+                }
+                palabras[i] = pal;
+                total++;
+            
+            }
+            
+        
+        
+        }
        
        
        
