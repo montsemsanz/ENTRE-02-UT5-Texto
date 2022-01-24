@@ -72,6 +72,7 @@ public class Texto {
      */
     public void addPalabras(String linea) {
         String del = "[,\\.\\s]+";
+        linea = linea.trim();
         String[] pala = linea.split(del);
         for(int i = 0; i < pala.length; i++){
             if(estaPalabra(pala[i]) == -1 && !textoCompleto()){
@@ -129,10 +130,6 @@ public class Texto {
      *
      */
     public String toString() {
-        //TODO 
-        
-        
-        
         
         return null;
 
@@ -144,15 +141,13 @@ public class Texto {
      *      
      */
     public Palabra getPalabra(int p) {
-        //TODO 
-        
-        
-        
-        
-        return null;
-
+        if(p >= 0 && p < total){
+            return palabras[p];
+        }
+        else{
+            return null;
+        }
     }
-
     
     /**
      *
