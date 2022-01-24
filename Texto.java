@@ -67,8 +67,15 @@ public class Texto {
      * insertarPalabraEnOrden()
      */
     public void addPalabras(String linea) {
-        //TODO
-
+        String[] separado = linea.trim().split("[,\\.\\s]+");
+        for (int i = 0; i < separado.length; i++){
+            if (estaPalabra(separado[i]) > 0) {
+                palabras[estaPalabra(separado[i])].incrementar();
+            }
+            else if (!textoCompleto()){
+                insertarPalabraEnOrden(separado[i]);
+            }
+        }
     }
     
      /**
@@ -78,10 +85,12 @@ public class Texto {
      *  Indiferente mayúsculas y minúsculas
      */
     public int estaPalabra(String palabra) {
-        //TODO
-        
-        
-        return 0;
+        for (int i = 0; i < total; i++){
+            if (palabras[i].getPalabra().equalsIgnoreCase(palabra)){
+                return i;
+            }
+        }
+        return -1;
     }
 
     /**
@@ -94,16 +103,14 @@ public class Texto {
      *
      */
     private void insertarPalabraEnOrden(String palabra) {
-       //TODO
-       
-       
-       
-       
-       
-       
+        int j = total - 1;
+        while (j >= 0 && palabras[j].getPalabra().compareToIgnoreCase(palabra) > 0) {
+            palabras[j + 1] = palabras[j];
+            j--;
+        }
+        palabras[j + 1] = new Palabra(palabra);
+        total++;
     }
-
-   
 
     /**
      * Representación textual del array de palabras
@@ -117,11 +124,16 @@ public class Texto {
      */
     public String toString() {
         //TODO 
+        StringBuilder sb = new StringBuilder();        
+        for (int i = 0; i < total; i++) {
+            sb.append(palabras[i].toString());
+            if ((i+1) % 5 == 0 ){
+                sb.append("\n");
+            }
+        }
         
-        
-        
-        
-        return null;
+        System.out.print(sb.toString());
+        return sb.toString();
 
     }
 
@@ -131,13 +143,10 @@ public class Texto {
      *      
      */
     public Palabra getPalabra(int p) {
-        //TODO 
-        
-        
-        
-        
+        if (p > -1 && p < total - 1) {
+            return palabras[p];
+        }
         return null;
-
     }
 
     
