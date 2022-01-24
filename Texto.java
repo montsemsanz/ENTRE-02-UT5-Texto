@@ -86,17 +86,24 @@ public class Texto {
      * insertarPalabraEnOrden()
      */
     public void addPalabras(String linea) {
-
-        String[] linea1 = linea.split(" ");
+        linea = linea.trim();
+        String[] linea1 = linea.split("[.,' ']+");
         for(int i = 0; i < linea1.length; i++) {
-            if(estaPalabra(linea1[i]) < 0){
-                insertarPalabraEnOrden(linea1[i].toString());
+            int p = estaPalabra(linea1[i]);
+            if(p >= 0) {
+                palabras[p].incrementar();
             }
-            else{
-
-                palabras[estaPalabra(linea1[i])].incrementar();
-
+            else if(!textoCompleto()){
+                insertarPalabraEnOrden(linea1[i]);
             }
+            // if(p < 0 && !textoCompleto()){
+            // insertarPalabraEnOrden(linea1[i]);
+            // }
+            // else if(p == 0){
+
+            // palabras[p].incrementar();
+
+            // }
         }
     }
 
@@ -107,14 +114,11 @@ public class Texto {
      *  Indiferente mayúsculas y minúsculas
      */
     public int estaPalabra(String palabra) {
-        if(total == 0){
-            return -1;
-        }
 
-        palabra = palabra.toLowerCase();
+        //palabra = palabra.toLowerCase();
         for(int i = 0; i < total; i++) {
-            String palabraAux = palabras[i].getPalabra().toLowerCase();
-            if(palabra.compareTo(palabraAux) == 0) {
+            //String palabraAux = palabras[i].getPalabra().toLowerCase();
+            if(palabra.equalsIgnoreCase(palabras[i].getPalabra())) {
                 return i;
             }
         }
@@ -133,7 +137,7 @@ public class Texto {
     private void insertarPalabraEnOrden(String palabra) {
         //Aqui hago una adaptación del codigo que aparece en los apuntes
         int i = total -1;
-        while(i > 0 && palabras[i].toString().compareTo(palabra)>=0) {
+        while(i >= 0 && palabras[i].getPalabra().compareToIgnoreCase(palabra) > 0) {
             palabras[i + 1] = palabras[i];
             i--;
         }
@@ -233,9 +237,9 @@ public class Texto {
      *
      */
     public int[] calcularFrecuenciaLongitud() {
-        int[] frecuencias = new int[total];
+        int[] frecuencias = new int[15];
         int j = 0;
-        for(int i = 0; i < total; i++){
+        for(int i = 0; i < frecuencias.length; i++){
             frecuencias[j] = palabras[i].getFrecuencia();
             j++;
         }
@@ -252,13 +256,15 @@ public class Texto {
     public int borrarDeFrecuenciaMenor(int frecuencia) {
         //Aqui vuelvo a hacer una adaptación del codigo que aparece en los apuntes
         int borrados = 0;  
-        for(int i = 0; i < total; i++) {
+        for(int i = total -1; i >= 0; i--) {
+
             if(palabras[i].getFrecuencia() < frecuencia) {
-                for(int j = i +1 ; j < total; j++) {
-                    palabras[j - 1] = palabras[j];
-                    borrados++;
-                    total--;
-                }
+                System.arraycopy(palabras, i+1, palabras, i, total - i -1);
+                // for(int j = i +1 ; j < total; j++) {
+                // palabras[j - 1] = palabras[j];
+                borrados++;
+                total--;
+                // }
             }
 
         }

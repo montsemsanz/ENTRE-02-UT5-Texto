@@ -21,13 +21,13 @@ public class Utilidades {
         for(int i = 0; i < cadena.length(); i++) {
             if(contador >= 3 && contador < 6 && contador < cadena.length()) {
                 secuencia += cadena.toLowerCase().charAt(i);
-                contador++;
+
             }
             else{
                 secuencia += cadena.toUpperCase().charAt(i);
-                contador++;
-            }
 
+            }
+            contador++;
         }
 
         return secuencia;
