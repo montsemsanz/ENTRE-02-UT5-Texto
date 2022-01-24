@@ -132,7 +132,7 @@ public class Texto {
      */
     public String toString() {
         //TODO 
-
+        StringBuilder sb = new StringBuilder();
         return null;
     }
 
@@ -165,30 +165,16 @@ public class Texto {
      * repetidas
      */
     public String[] palabrasConLetrasRepetidas() {
-        String[] repetida = new String[tieneRepetidas()];
+        String[] repetidas = new String[total];
         int j = 0;
         for(int i = 0; i < total; i++){
             if(Utilidades.tieneLetrasRepetidas(palabras[i].getPalabra())){
-                repetida[j] = palabras[i].getPalabra();
+                repetidas[j] = palabras[i].getPalabra();
                 j++;
 
             }
         }
-        return repetida;    
-    }
-
-    /**
-     * Método auxiliar de ayuda para saber cuantas palabras tienen letras repetidas en el array palabras
-     */
-    private int tieneRepetidas()
-    {
-        int repes = 0;
-        for(int i = 0; i < total;i++){
-            if(Utilidades.tieneLetrasRepetidas(palabras[i].getPalabra())){
-                repes++;
-            }
-        }
-        return repes;
+        return Arrays.copyOf(repetidas, j);    
     }
 
     /**
