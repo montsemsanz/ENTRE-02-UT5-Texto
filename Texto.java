@@ -123,7 +123,6 @@ public class Texto {
      *
      */
     public String toString() {
-        //TODO 
         StringBuilder sb = new StringBuilder();        
         for (int i = 0; i < total; i++) {
             sb.append(palabras[i].toString());
@@ -156,13 +155,11 @@ public class Texto {
      * capitalizadas de forma alterna
      */
     public String[] capitalizarAlterna() {
-       //TODO 
-        
-        
-        
-        
-        return null;
-
+        String[] alterna = new String[total];
+        for (int i = 0; i < total; i++){
+            alterna[i] = Utilidades.capitalizarAlterna(palabras[i].getPalabra());
+        }
+        return alterna;
     }
 
     /**
@@ -172,11 +169,16 @@ public class Texto {
      */
     public String[] palabrasConLetrasRepetidas() {
         //TODO 
-        
-        
-        
-        
-        return null;    }
+        String[] repetidas = new String[total];
+        int pos = 0;
+        for (int i = 0; i < total; i++){
+            if (Utilidades.tieneLetrasRepetidas(palabras[i].getPalabra())) {
+                repetidas[pos] = palabras[i].getPalabra();
+                pos++;
+            }
+        }
+        return Arrays.copyOf(repetidas, pos);    
+    }
 
      /**
      *
