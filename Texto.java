@@ -66,7 +66,15 @@ public class Texto {
      * insertarPalabraEnOrden()
      */
     public void addPalabras(String linea) {
-        
+        String[] i = linea.trim().split("[.\\,\\s]+");
+        for(int j = 0; j < i.length; j++)   {
+            if(estaPalabra(i[j]) >= 0)    {
+                palabras[estaPalabra(i[j])].incrementar();
+            }
+            else if (!textoCompleto())  {
+                insertarPalabraEnOrden(i[j]);
+            }
+        }
     }
 
     /**
@@ -120,9 +128,14 @@ public class Texto {
      *
      */
     public String toString() {
-        //TODO 
-
-        return null;
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i < total; i++)   {
+            if(i % 5 == 0)  {
+                sb.append("\n");
+            }
+            sb.append(String.format("%5s", palabras[i].toString()));
+        }
+        return sb.toString();
     }
 
     /**
