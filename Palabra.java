@@ -1,7 +1,6 @@
 /**
  * Representa a una palabra y su frecuencia de aparición
  * en un texto
- *
  */
 public class Palabra {
     
@@ -35,7 +34,6 @@ public class Palabra {
      */
     public void incrementar() {
         frecuencia++;
-        
     }
     
     /**

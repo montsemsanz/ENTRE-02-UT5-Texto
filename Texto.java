@@ -10,7 +10,7 @@ import java.util.Scanner;
  *
  * El array guarda como máximo n palabras distintas
  *
- *
+ * @author - Iratxe Remón
  */
 public class Texto {
 
@@ -23,28 +23,33 @@ public class Texto {
      * e inicializa adecuadamente el resto de atributos
      */
     public Texto(int n) {
-        //TODO
+        palabras = new Palabra[n];
+        total = 0;
     }
 
     /**
-     *
      * @return true si el texto está completo
      */
     public boolean textoCompleto() {
-        //TODO
-        
-        return true;
+        return total == palabras.length;
     }
 
     /**
-     *
      * @return el nº de palabras distintas aparecidas en
      * el texto y guardadas en el array
      */
     public int totalPalabras() {
-        //TODO
-        
-        return 0;
+        int suma = 0;
+
+        for (int i = 0; i < total - 1; i++) {
+            for (int j = i + 1; j < total; j++) {
+                if (!palabras[i].equals(palabras[j])) {
+                    suma++;
+                }
+            }
+        }
+
+        return suma;
     }
 
     /**
@@ -73,17 +78,16 @@ public class Texto {
         //TODO
 
     }
-    
-     /**
+
+    /**
      *  dada una palabra devuelve la posición en la que se
      *  encuentra en el array o -1 si no está
      *
      *  Indiferente mayúsculas y minúsculas
      */
     public int estaPalabra(String palabra) {
-        //TODO
         
-        
+
         return 0;
     }
 
@@ -97,17 +101,12 @@ public class Texto {
      *
      */
     private void insertarPalabraEnOrden(String palabra) {
-       //TODO
-       
-       
-       
-       
+        //TODO
+
        
        
     }
-
    
-
     /**
      * Representación textual del array de palabras
      * Cada palabra y su frecuencia de aparición
@@ -120,14 +119,10 @@ public class Texto {
      */
     public String toString() {
         //TODO 
-        
-        
-        
+
         
         return null;
-
     }
-
     /**
      *  Devuelve la palabra de la posición p
      *  Si p es incorrecto se devuelve null
@@ -135,14 +130,10 @@ public class Texto {
      */
     public Palabra getPalabra(int p) {
         //TODO 
-        
-        
-        
+
         
         return null;
-
     }
-
     
     /**
      *
@@ -150,15 +141,11 @@ public class Texto {
      * capitalizadas de forma alterna
      */
     public String[] capitalizarAlterna() {
-       //TODO 
-        
-        
-        
+        //TODO 
+
         
         return null;
-
     }
-
     /**
      *
      * @return un array de cadenas con las palabras que tienen letras
@@ -166,13 +153,10 @@ public class Texto {
      */
     public String[] palabrasConLetrasRepetidas() {
         //TODO 
-        
-        
-        
+
         
         return null;    }
-
-     /**
+    /**
      *
      * @return un array con la frecuencia de palabras de cada longitud
      * La palabra más larga consideraremos de longitud 15
@@ -180,13 +164,11 @@ public class Texto {
      */
     public int[] calcularFrecuenciaLongitud() {
         //TODO 
-        
-        
-        
+
         
         return null;
     }
-    
+
     /**
      *
      * @param frecuencia se borra del array palabras aquellas de frecuencia
@@ -195,14 +177,11 @@ public class Texto {
      */
     public int borrarDeFrecuenciaMenor(int frecuencia) {
         //TODO 
-        
-        
-        
+
         
         return 0;
     }
 
-   
 
     /**
      *  Lee de un fichero un texto formado por una

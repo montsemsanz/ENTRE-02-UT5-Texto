@@ -2,9 +2,9 @@ import java.util.Arrays;
 import java.util.stream.IntStream;
 
 /**
- *  Punto de entrada a la aplicación 
+ * Punto de entrada a la aplicación 
  *
- *
+ * @author - Iratxe Remón
  */
 public class AppTexto {
     
