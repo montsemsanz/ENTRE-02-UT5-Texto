@@ -158,11 +158,12 @@ public class Texto {
      * @return un array de cadenas con las palabras del texto
      * capitalizadas de forma alterna
      */
-    public String[] capitalizarAlterna() {
-        //TODO 
+    public String[] capitalizarAlterna() { 
         String[] capitalizadas = new String[total];
-    
-        return null;
+        for(int i = 0; i < total; i++){
+            capitalizadas[i] = Utilidades.capitalizarAlterna(palabras[i].getPalabra());
+        }
+        return capitalizadas;
     }
 
     /**
