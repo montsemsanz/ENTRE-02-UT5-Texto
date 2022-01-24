@@ -225,9 +225,19 @@ public class Texto {
      * @return el n de palabras borradas
      */
     public int borrarDeFrecuenciaMenor(int frecuencia) {
-        for(int i = 0; i < ){
-        
+        int cantBorradas = 0;
+        int i = 0;
+        while(i < total){
+            if(palabras[i].getFrecuencia() < 3){
+                for(int j = i + 1; j < i; i++){
+                    palabras[i - 1] = palabras[i];
+                }
+                cantBorradas++;
+                total--;
+            }
+            i++;
         }
+        return cantBorradas;
     }
 
     /**
