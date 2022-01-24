@@ -42,7 +42,7 @@ public class Texto {
      */
     public int totalPalabras() {
         int cantidad = 0;
-        for(int i = 1; i < total; i++){
+        for(int i = 0; i < total; i++){
             cantidad++;
         }
         return cantidad;
@@ -90,13 +90,12 @@ public class Texto {
      *  Indiferente mayúsculas y minúsculas
      */
     public int estaPalabra(String palabra) {
-        int p = -1;
         for(int i = 0; i < total; i++){
-            if(palabras[i].getPalabra().toUpperCase() == palabra.toUpperCase()){
-                p = i;
+            if(palabras[i].getPalabra().compareToIgnoreCase(palabra) == 0){
+                return i;
             }
         }
-        return p;
+        return -1;
     }
 
     /**
