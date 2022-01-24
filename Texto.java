@@ -144,9 +144,10 @@ public class Texto {
      *      
      */
     public Palabra getPalabra(int p) {
-        //TODO 
-
-        return null;
+        if(p < 0 || p >= total){
+            return null;
+        }
+        return palabras[p];
     }
 
     /**
@@ -155,7 +156,11 @@ public class Texto {
      * capitalizadas de forma alterna
      */
     public String[] capitalizarAlterna() {
-        return null;
+        String[] cap = new String[total];
+        for(int i = 0; i < total; i++){
+            cap[i] = Utilidades.capitalizarAlterna(palabras[i].getPalabra());
+        }
+        return cap;
     }
 
     /**
