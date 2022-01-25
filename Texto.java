@@ -10,7 +10,7 @@ import java.util.Scanner;
  *
  * El array guarda como máximo n palabras distintas
  *
- *
+ *  @author - Julen Baztarrica
  */
 public class Texto {
 

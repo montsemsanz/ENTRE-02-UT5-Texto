@@ -1,8 +1,10 @@
 /**
  * clase Utilidades 
  * incluye  métodos estáticos para trabajar con String
- *
- */
+ * @author - Julen Baztarrica
+ */ 
+
+
 public class Utilidades {
 
     /**
