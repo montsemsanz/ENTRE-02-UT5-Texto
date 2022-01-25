@@ -16,13 +16,35 @@ public class Utilidades {
      */
 
     public static String capitalizarAlterna(String cadena) {
+        String aux = "";
+        String str = "";
+        int mayus = 1;
+        if(cadena.length() < 4){
 
-        String aux1 = cadena.substring(0, 3);
-        String aux2 = cadena.substring(3, cadena.length());
+            str = cadena.toUpperCase();
+        }
+        else{
+            for(int i = 0; i <= cadena.length() - 1; i += 3){
+                if(i + 3 >= cadena.length()){
+                    aux = cadena.substring(i,cadena.length());
+                    str += aux;
+                    return str;
+                }
 
-        aux1 = aux1.toUpperCase();
+                aux += cadena.substring(i, i + 3);
+                if(mayus % 2 != 0){
+                    aux = aux.toUpperCase();
 
-        String str = aux1 + aux2;
+                }
+                else{
+                    aux = aux.toLowerCase();
+                
+                }
+                mayus++;
+                str += aux;
+
+            }
+        }
 
         return str;
     }
@@ -43,7 +65,6 @@ public class Utilidades {
         while(x <= cadena.length()){
 
             String aux1 = cadena.substring(x - 1, x);
-            
 
             for(int i = 1; i <= cadena.length() - 1; i++){
                 if(x == i){
@@ -65,7 +86,6 @@ public class Utilidades {
         return repetidos;
     }
 
-    
     /**
      *
      */
@@ -97,7 +117,5 @@ public class Utilidades {
         System.out.println(cadena + "\tTiene letras repetidas?: " +
             Utilidades.tieneLetrasRepetidas(cadena));
 
-        
     }
-
 }

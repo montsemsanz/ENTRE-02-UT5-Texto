@@ -69,12 +69,18 @@ public class Texto {
      * insertarPalabraEnOrden()
      */
     public void addPalabras(String linea) {
+        linea = linea.trim();
+        Palabra pal = new Palabra(linea);
         if(estaPalabra(linea) == -1 || total < palabras.length){
+            if(total == 0){
 
-            insertarPalabraEnOrden(linea);
+                palabras[0] = pal;
 
+            }else{
+                insertarPalabraEnOrden(linea);
+            }
         }
-
+        total++;
     }
 
     /**
@@ -87,7 +93,7 @@ public class Texto {
         int posicion = -1;
 
         for(int i = 0; i <= total - 1; i++){
-            if(palabras[i].getPalabra() == palabra){
+            if(palabras[i].getPalabra().equals(palabra)){
                 posicion = i;
 
             }
@@ -108,7 +114,7 @@ public class Texto {
     private void insertarPalabraEnOrden(String palabra) {
         Palabra pal = new Palabra(palabra);
         for(int i = 0; i <= total - 1; i++){
-            if(palabras[i].getPalabra().compareTo(palabra) < 0){
+            if(palabras[i].getPalabra().compareTo(palabra) > 0){
                 for(int j = total - 1; j >= i; j++){
 
                     palabras[j + 1] = palabras[j];  
@@ -119,13 +125,10 @@ public class Texto {
 
             }
 
-        
         }
 
-       
-       
     }
-   
+
     /**
      * Representación textual del array de palabras
      * Cada palabra y su frecuencia de aparición
@@ -138,15 +141,16 @@ public class Texto {
      */
     public String toString() {
         StringBuilder strb = new StringBuilder();
-        
+
         for(int i = 0; i <= total - 1; i++){
-        
+
             strb.append(palabras[i].toString()).append("\t");
-        
+
         }
-        
+
         return strb.toString();
     }
+
     /**
      *  Devuelve la palabra de la posición p
      *  Si p es incorrecto se devuelve null
@@ -159,9 +163,7 @@ public class Texto {
             return null;            
         }
 
-        
         return palabras[p];
-
     }
 
     /**
@@ -176,7 +178,7 @@ public class Texto {
             capitalizados[i] = Utilidades.capitalizarAlterna(palabras[i].getPalabra());
 
         }        
-        
+
         return capitalizados;
 
     }
@@ -207,9 +209,13 @@ public class Texto {
      *
      */
     public int[] calcularFrecuenciaLongitud() {
-        //TODO 
+        int[] frecuencia = new int[total];
+        for(int i = 0; i <= total - 1; i++){
 
-        
+            frecuencia[i] = palabras[i].getFrecuencia();
+
+        }
+
         return null;
     }
 
@@ -220,12 +226,20 @@ public class Texto {
      * @return el n de palabras borradas
      */
     public int borrarDeFrecuenciaMenor(int frecuencia) {
-        //TODO 
+        int borradas = 0;
 
-        
-        return 0;
+        for(int i = 0; i <= total - 1; i++){
+            if(palabras[i].getFrecuencia() < frecuencia){
+
+                palabras[i - 1] = palabras[i];
+
+            }
+            borradas++;
+            total--;
+
+        }
+        return borradas;
     }
-
 
     /**
      *  Lee de un fichero un texto formado por una
