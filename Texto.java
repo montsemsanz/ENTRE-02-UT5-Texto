@@ -54,7 +54,7 @@ public class Texto {
 
     /**
      * Dada una línea de texto conteniendo diferentes palabras
-     * el método extre las palabras y las inserta en el array
+     * el método extrae las palabras y las inserta en el array
      *
      * Las palabras en la línea están separadas por uno o varios espacios
      * seguidos, o por el punto o por la coma
@@ -75,8 +75,17 @@ public class Texto {
      * insertarPalabraEnOrden()
      */
     public void addPalabras(String linea) {
-        palabras[total] = new Palabra(linea);
-        total++;
+        linea = linea.trim();
+        String[] cadena = linea.split("[,\\.\\s]+");
+    
+        for (int i = 0; i < cadena.length; i++) {
+            if (estaPalabra(cadena[i]) == -1) {
+                insertarPalabraEnOrden(cadena[i]); 
+            }
+            else {
+                palabras[i].incrementar();
+            }
+        }
     }
 
     /**
@@ -107,8 +116,15 @@ public class Texto {
      *
      */
     private void insertarPalabraEnOrden(String palabra) {
-        //TODO
-
+        if (estaPalabra(palabra) == -1 && !textoCompleto()) {
+            int i = total - 1;
+            while (i >= 0 && palabras[i].getPalabra().compareToIgnoreCase(palabra) > 0) {
+                palabras[i + 1] = palabras[i];
+                i--;
+            }
+            palabras[i + 1] = new Palabra(palabra);
+            total++;
+        }
     }
 
     /**
