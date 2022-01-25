@@ -127,13 +127,19 @@ public class Texto {
      *
      */
     private void insertarPalabraEnOrden(String palabra) {
-       //TODO
-       
-       
-       
-       
-       
-       
+       if (!textoCompleto() && estaPalabra(palabra) == - 1) {
+            String auxPalabra = palabra.toUpperCase();
+            int i = total - 1;
+            //buscar lugar e ir desplazando a la derecha
+            while (i >= 0 && palabras[i].getPalabra().compareTo(auxPalabra) > 0 ) {
+                palabras[i + 1] = palabras[i];
+                i--;
+            }
+            //insertar en posicion..
+            Palabra nueva = new Palabra(auxPalabra);
+            palabras[i + 1] = nueva;
+            total++;
+        }
     }
 
    
