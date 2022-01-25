@@ -69,7 +69,7 @@ public class Texto {
     public void addPalabras(String linea) {
         String[] separado = linea.trim().split("[,\\.\\s]+");
         for (int i = 0; i < separado.length; i++){
-            if (estaPalabra(separado[i]) > 0) {
+            if (estaPalabra(separado[i]) >= 0) {
                 palabras[estaPalabra(separado[i])].incrementar();
             }
             else if (!textoCompleto()){
@@ -77,8 +77,8 @@ public class Texto {
             }
         }
     }
-    
-     /**
+
+    /**
      *  dada una palabra devuelve la posición en la que se
      *  encuentra en el array o -1 si no está
      *
@@ -130,8 +130,7 @@ public class Texto {
                 sb.append("\n");
             }
         }
-        
-        System.out.print(sb.toString());
+
         return sb.toString();
 
     }
@@ -148,7 +147,6 @@ public class Texto {
         return null;
     }
 
-    
     /**
      *
      * @return un array de cadenas con las palabras del texto
@@ -168,7 +166,6 @@ public class Texto {
      * repetidas
      */
     public String[] palabrasConLetrasRepetidas() {
-        //TODO 
         String[] repetidas = new String[total];
         int pos = 0;
         for (int i = 0; i < total; i++){
@@ -180,21 +177,21 @@ public class Texto {
         return Arrays.copyOf(repetidas, pos);    
     }
 
-     /**
+    /**
      *
      * @return un array con la frecuencia de palabras de cada longitud
      * La palabra más larga consideraremos de longitud 15
      *
      */
     public int[] calcularFrecuenciaLongitud() {
-        //TODO 
-        
-        
-        
-        
-        return null;
+        int[] frecuencias = new int[15];
+        Arrays.fill(frecuencias, 0);
+        for (int i = 0; i < total; i++) {
+            frecuencias[palabras[i].getPalabra().length()-1]++;
+        }
+        return frecuencias;
     }
-    
+
     /**
      *
      * @param frecuencia se borra del array palabras aquellas de frecuencia
@@ -203,14 +200,21 @@ public class Texto {
      */
     public int borrarDeFrecuenciaMenor(int frecuencia) {
         //TODO 
+        int borradas = 0;
+        for (int i = total - 1; i >= 0; i--) {
+            if (palabras[i].getFrecuencia() < frecuencia) {
+                for (int j = i; j <= total - 2; j++) {
+                    palabras[j] = palabras[j + 1];
+                }
+                total--;
+                borradas++;
+            }
+        }
+
         
-        
-        
-        
-        return 0;
+        return borradas;
     }
 
-   
 
     /**
      *  Lee de un fichero un texto formado por una
