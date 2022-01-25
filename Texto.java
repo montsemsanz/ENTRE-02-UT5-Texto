@@ -67,7 +67,16 @@ public class Texto {
      * insertarPalabraEnOrden()
      */
     public void addPalabras(String linea) {
-        //TODO
+        String[] pal = linea.trim().split("[,\\.\\s]+");
+        for(int i = 0; i < pal.length; i++){
+           if(estaPalabra(pal[i])>= 0){
+                palabras[i].incrementar();
+            }
+            else if(!textoCompleto() && (estaPalabra(pal[i])>= 0)){
+            insertarPalabraEnOrden(pal[i]);
+            } 
+    
+        }
 
     }
     
@@ -105,14 +114,8 @@ public class Texto {
         }
         palabras[i + 1] = new Palabra(palabra); 
         total ++; 
-           
-        
-       
-       
-       
-    }
 
-   
+    }
 
     /**
      * Representación textual del array de palabras
@@ -126,15 +129,13 @@ public class Texto {
      */
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        // for(int i = 0;i<total;i++){
-            // for(int j = 0;i<5;j++){
-                // sb.append(palabras.toString());
-            // }
-            // sb.append("\n");
-        // }
-        
-        
-        
+        for(int i = 0;i<total;i++){
+            if(i % 5 == 0){
+                sb.append("\n");
+            }
+            sb.append(palabras[i].toString());
+        }
+
         return sb.toString();
 
     }
