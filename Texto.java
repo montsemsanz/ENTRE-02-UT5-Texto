@@ -172,14 +172,14 @@ public class Texto {
     public String[] palabrasConLetrasRepetidas() {
         String[] repetidas = new String[total];
         int j = 0;
-        
+
         for (int i = 0; i < total; i++) {
             if (Utilidades.tieneLetrasRepetidas(palabras[i].getPalabra())) {
                 repetidas[j] = palabras[i].getPalabra();
                 j++;
             }
         }
-        
+
         return Arrays.copyOf(repetidas, j);    
     }
 
@@ -189,9 +189,14 @@ public class Texto {
      *
      */
     public int[] calcularFrecuenciaLongitud() {
-        //TODO 
-
-        return null;
+        int[] frec = new int[15];
+        
+        for (int i = 0; i < total; i++) {
+            int longitud = palabras[i].getPalabra().length();    
+            frec[longitud - 1]++;
+        }
+        
+        return frec;
     }
 
     /**
@@ -200,9 +205,19 @@ public class Texto {
      * @return el n de palabras borradas
      */
     public int borrarDeFrecuenciaMenor(int frecuencia) {
-        //TODO 
-
-        return 0;
+        int suma = 0;
+        for (int i = total - 1; i > -1; i--) {
+            if (palabras[i].getFrecuencia() < frecuencia) {
+                for (int j = i; j < total ; j++) {
+                   palabras[j] = palabras[j + 1]; 
+                }
+                total--;
+                suma++;
+                
+            }
+        }
+        
+        return suma;
     }
 
     /**
