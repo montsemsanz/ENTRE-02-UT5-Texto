@@ -155,13 +155,17 @@ public class Texto {
      *
      */
     public String toString() {
-        //TODO 
-        
-        
-        
-        
-        return null;
-
+        String resul = "";//StringBuilder
+        int col = 0;
+        for (int i = 0; i < total; i++) {
+            resul += palabras[i].toString();
+            col++;
+            if (col == 5) {
+                resul += "\n";
+                col = 0;
+            }
+        }
+        return resul;
     }
 
     /**
