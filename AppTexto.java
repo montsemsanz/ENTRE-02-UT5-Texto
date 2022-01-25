@@ -18,19 +18,19 @@ public class AppTexto {
             
             separador();
             
-            testCapitalizarAlterna(texto);
+            //testCapitalizarAlterna(texto);
             separador();
             
-            testPalabrasConLetrasRepetidas(texto);
+            //testPalabrasConLetrasRepetidas(texto);
             separador();
             
-            testCalcularFrecuenciaLongitud(texto);
+            //testCalcularFrecuenciaLongitud(texto);
             separador();
             
-            testBorrarDeFrecuenciaMenor(texto);
+            //testBorrarDeFrecuenciaMenor(texto);
             separador();
             
-            testCalcularFrecuenciaLongitud(texto);
+            //testCalcularFrecuenciaLongitud(texto);
             separador();
             
             
@@ -61,17 +61,17 @@ public class AppTexto {
         System.out.println(texto.toString());
     }
     
-    private static void testCalcularFrecuenciaLongitud(Texto texto) {
-        System.out.println("Longitudes y frecuencias ");
-        int[] frecuencias = texto.calcularFrecuenciaLongitud();
-        System.out.print(String.format("%15s", "Longitudes"));
-        IntStream.range(0, frecuencias.length).forEach(i -> System.out.print(String.format("%5d", i + 1)));
-        System.out.println();
-        System.out.print(String.format("%15s", "Nº palabras"));
-        IntStream.range(0, frecuencias.length).forEach(i -> System.out.print(String.format("%5d", frecuencias[i])));
-        System.out.println();
+    // private static void testCalcularFrecuenciaLongitud(Texto texto) {
+        // System.out.println("Longitudes y frecuencias ");
+        // int[] frecuencias = texto.calcularFrecuenciaLongitud();
+        // System.out.print(String.format("%15s", "Longitudes"));
+        // IntStream.range(0, frecuencias.length).forEach(i -> System.out.print(String.format("%5d", i + 1)));
+        // System.out.println();
+        // System.out.print(String.format("%15s", "Nº palabras"));
+        // IntStream.range(0, frecuencias.length).forEach(i -> System.out.print(String.format("%5d", frecuencias[i])));
+        // System.out.println();
         
-    }
+    // }
     
     private static void separador() {
         System.out.println("\n" +

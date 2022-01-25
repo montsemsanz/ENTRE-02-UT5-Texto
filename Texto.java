@@ -70,14 +70,15 @@ public class Texto {
         String[] pal = linea.trim().split("[,\\.\\s]+");
         for(int i = 0; i < pal.length; i++){
            if(estaPalabra(pal[i])>= 0){
-                palabras[i].incrementar();
+                   palabras[estaPalabra(pal[i])].incrementar();
             }
-            else if(!textoCompleto() && (estaPalabra(pal[i])>= 0)){
-            insertarPalabraEnOrden(pal[i]);
+            else if(!textoCompleto()){
+                insertarPalabraEnOrden(pal[i]);
             } 
     
         }
-
+        
+          
     }
     
      /**
@@ -135,8 +136,17 @@ public class Texto {
             }
             sb.append(palabras[i].toString());
         }
-
+        
         return sb.toString();
+        
+          // // StringBuilder sb = new StringBuilder();
+        // for(int i = 0; i < total; i++)   {
+            // if(i % 5 == 0)  {
+                // sb.append("\n");
+            // }
+            // sb.append(String.format("%5s", palabras[i].toString()));
+        // }
+        // return sb.toString();
 
     }
 
