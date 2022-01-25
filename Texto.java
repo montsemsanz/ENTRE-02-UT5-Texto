@@ -218,16 +218,36 @@ public class Texto {
         String[] repetidas = new String[total];
         int repetidasL = 0;
         for(int i = 0; i < total; i++) {
-            for(int j = 0; j < palabras[i].toString().length(); j++){
-                for(int h = 1; h < palabras[i].toString().length();h++){
-                    if(palabras[i].toString().indexOf(j) == palabras[i].toString().indexOf(h)){
-                        repetidas[repetidasL] = palabras[i].toString();                 
-                    }
-                }
+            if(tieneCifrasRepetidas(palabras[i].getPalabra())){
+                repetidas[repetidasL] = palabras[i].getPalabra();
+                repetidasL++;
             }
+
+            // for(int j = 0; j < palabras[i].getPalabra().length(); j++){
+            // for(int h = 1; h < palabras[i].getPalabra().length();h++){
+            // if(palabras[i].getPalabra().indexOf(j) == palabras[i].getPalabra().indexOf(h)){
+            // repetidas[repetidasL] = palabras[i].getPalabra();                 
+            // }
+            // }
+            // }
         }
 
         return repetidas;    
+    }
+
+    /**
+     * Merodo auxiliar para comprobar si tiene letras repetidas una palabra
+     */
+    public boolean tieneCifrasRepetidas(String palabra)
+    {
+        for(int i = 0; i < palabra.length(); i++) {
+            for(int j = i+ 1; j < palabra.length(); j++) {
+                if(palabra.toLowerCase().charAt(i) == palabra.toLowerCase().charAt(j)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     /**
@@ -237,14 +257,32 @@ public class Texto {
      *
      */
     public int[] calcularFrecuenciaLongitud() {
-        int[] frecuencias = new int[total];
-        int j = 0;
-        for(int i = 0; i < frecuencias.length; i++){
-            frecuencias[j] = palabras[i].getFrecuencia();
-            j++;
+        int[] frecuencias = new int[15];
+
+        for(int i = 0; i < total; i++) {
+            for(int j = 1; j <= 15; j++) {
+                if(calcularLongitud(palabras[i].getPalabra()) == j) {
+                    frecuencias[j-1] ++ ;
+                }
+            }
+
         }
+        // int j = 0;
+        // for(int i = 0; i < frecuencias.length; i++){
+        // frecuencias[j] = palabras[i].getFrecuencia();
+        // j++;
+        // }
 
         return frecuencias;
+    }
+
+    /**
+     * Metodo auxiliar para calcular la longitud de una palabra
+     */
+    public int calcularLongitud(String cadena)
+    {
+        int longa = cadena.length();
+        return longa;
     }
 
     /**
