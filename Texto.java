@@ -206,9 +206,13 @@ public class Texto {
      */
     public int[] calcularFrecuenciaLongitud() {
         int[] frecuencia = new int[15];
-        
-        
-        
+        int i = 0; 
+        int longitudCadena;
+        while(i < total){
+            longitudCadena = palabras[i].getPalabra().length();
+            frecuencia[longitudCadena]++;
+            i++;
+        }
         
         return frecuencia;
     }
