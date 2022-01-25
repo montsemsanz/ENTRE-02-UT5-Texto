@@ -127,12 +127,15 @@ public class Texto {
      *
      */
     public String toString() {
-        //TODO 
+        StringBuilder sb = new StringBuilder();
         
-        
-        
-        
-        return null;
+        for(int i = 0; i < total; i++){
+            sb.append(String.format("%5s", palabras[i].toString()));
+            if(i % 5 == 0){
+                sb.append("\n");
+            }
+        }
+        return sb.toString();
 
     }
 
@@ -172,7 +175,8 @@ public class Texto {
         
         
         
-        return null;    }
+        return null;    
+    }
 
      /**
      *
@@ -181,12 +185,12 @@ public class Texto {
      *
      */
     public int[] calcularFrecuenciaLongitud() {
-        //TODO 
-        
-        
-        
-        
-        return null;
+        int[] frecuencia = new int[15];
+        for(int i = 0; i < total; i++) {
+            int numeroVeces = palabras[i].getPalabra().length();
+            frecuencia[numeroVeces - 1]++;
+        }
+        return frecuencia;
     }
     
     /**
