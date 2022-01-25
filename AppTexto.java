@@ -8,7 +8,7 @@ import java.util.stream.IntStream;
  */
 public class AppTexto {
     public static void main(String[] args) {
-            if(args.length == 2){
+            if(args.length == 2 && args[0].endsWith(".txt")){
                 Texto texto = new Texto(Integer.parseInt(args[1]));
                 texto.leerDeFichero(args[0]);
             

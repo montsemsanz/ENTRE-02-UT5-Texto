@@ -167,9 +167,8 @@ public class Texto {
             capitalizadas[i] = Utilidades.capitalizarAlterna(palabras[i].getPalabra());
         }
         return capitalizadas;
-
     }
-
+    
     /**
      *
      * @return un array de cadenas con las palabras que tienen letras
