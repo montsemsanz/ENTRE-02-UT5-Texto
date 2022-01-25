@@ -9,7 +9,7 @@ import java.util.stream.IntStream;
 public class AppTexto {
     
     public static void main(String[] args) {
-        
+            if(args.length == 2){
         
             Texto texto = new Texto(Integer.parseInt(args[1]));
             texto.leerDeFichero(args[0]);
@@ -32,8 +32,11 @@ public class AppTexto {
             
             testCalcularFrecuenciaLongitud(texto);
             separador();
-            
-            
+            }
+            else{
+                System.out.println("Se han introducido mal los argumentos"+ "\n");
+                System.out.println("Usage:java AppTexto <fichero> <n>");
+            }
    
         
         

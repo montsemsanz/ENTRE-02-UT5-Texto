@@ -42,7 +42,7 @@ public class Texto {
         int diferentes = 0;
         for(int i = 0;i < total;i++) {
             for(int aux = 1; aux < total; aux++){
-                if(!palabras[i].equals(palabras[aux])){
+                if(!palabras[i].equals(palabras[aux]) && aux != i){
                     diferentes++;
                 }
             }
@@ -166,8 +166,7 @@ public class Texto {
     public String[] capitalizarAlterna() {
         String [] arraycapailzado = new String [total];
         for(int i = 0; i < total ; i++){
-            
-            
+            arraycapailzado[i] = Utilidades.capitalizarAlterna(palabras[i].getPalabra());
         }
         return arraycapailzado;
     }
