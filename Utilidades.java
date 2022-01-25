@@ -46,13 +46,13 @@ public class Utilidades {
      *
      */
     public static boolean tieneLetrasRepetidas(String cadena) {
-        // for (int i = 0; i < cadena.length(); i++){
-            // for (int j = 0; j < cadena.length(); j++){
-                // if (cadena.charAt(i).equals(cadena.charAt(j)) && j != i) {
-                // return true;
-            // }
-            // }
-        // }
+        for (int i = 0; i < cadena.length(); i++){
+            for (int j = 0; j < cadena.length(); j++){
+                if (cadena.substring(i - 1, i).equals(cadena.substring(j - 1, j)) && j != i) {
+                return true;
+            }
+            }
+        }
         return false;
     }
     

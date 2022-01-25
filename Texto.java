@@ -135,11 +135,11 @@ public class Texto {
      */
     public String toString() {
         StringBuilder sb = new StringBuilder();
-         for (int i = 0; i < total; i++) {
+        for (int i = 0; i < total; i++) {
             if(i % 5 == 0){
                 sb.append("\n");
             }
-             sb.append(palabras[i].toString());
+            sb.append(palabras[i].toString());
         }
         return sb.toString();
     }
@@ -214,9 +214,16 @@ public class Texto {
      * @return el n de palabras borradas
      */
     public int borrarDeFrecuenciaMenor(int frecuencia) {
-        //TODO 
-
-        return 0;
+            int totalBorradas = 0;
+            for (int i = total - 1 + 1; i < total; i++) {
+                if (palabras[i].getFrecuencia() < frecuencia) {
+                   palabras[i - 1] = palabras[i]; 
+                   totalBorradas++;
+                }
+                
+            }
+            total--;
+            return totalBorradas;
     }
 
     /**
