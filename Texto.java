@@ -175,8 +175,9 @@ public class Texto {
         String[] repetidas = new String[total];
         int j = 0;
         for(int i = 0; i < total; i++){
-            if(Utilidades.tieneLetrasRepetidas(palabras[i].getPalabra())){
-                repetidas[j] = palabras[i].getPalabra();
+            String pal = palabras[i].getPalabra();
+            if(Utilidades.tieneLetrasRepetidas(pal)){
+                repetidas[j] = pal;
                 j++;
 
             }
