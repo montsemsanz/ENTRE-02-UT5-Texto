@@ -41,10 +41,8 @@ public class Texto {
     public int totalPalabras() {
         int diferentes = 0;
         for(int i = 0;i < total;i++) {
-            for(int aux = 0; aux < total; aux++){
-                if(palabras[i].getFrecuencia() > 1){
-                    diferentes++;
-                }
+            if(palabras[i].getFrecuencia() > 1){
+                diferentes++;
             }
         }
         return diferentes;
@@ -226,9 +224,9 @@ public class Texto {
                 totalborradas++;
             }
             else{
-              x++;  
+                x++;  
             }
-            
+
         }
         return totalborradas;
     }
