@@ -42,7 +42,7 @@ public class Texto {
         int diferentes = 0;
         for(int i = 0;i < total;i++) {
             for(int aux = 0; aux < total; aux++){
-                if(!palabras[i].equals(palabras[aux]) && aux != i){
+                if(palabras[i].getFrecuencia() > 1){
                     diferentes++;
                 }
             }
@@ -219,13 +219,16 @@ public class Texto {
         int x = 0;
         while (x < total){
             if(palabras[x].getFrecuencia() < frecuencia){
-                for (int i = total - 1; i <= 0; i--) {
-                    palabras[x - 1] = palabras[x];
+                for (int i = x + 1; i < total; i++) {
+                    palabras[i - 1] = palabras[i];
                 }
                 total--;
                 totalborradas++;
             }
-            x++;
+            else{
+              x++;  
+            }
+            
         }
         return totalborradas;
     }
