@@ -48,7 +48,7 @@ public class Texto {
                 }
             }
         }
-        
+
         return totalDiferentes;
     }
 
@@ -75,11 +75,18 @@ public class Texto {
      * insertarPalabraEnOrden()
      */
     public void addPalabras(String linea) {
-        //TODO
 
+        for (int i = 0; i < palabras.length; i++) {
+            if(estaPalabra(linea) != -1 && !textoCompleto()) {
+                insertarPalabraEnOrden(linea);
+            }
+            else {
+
+            }
+        }
     }
-    
-     /**
+
+    /**
      *  dada una palabra devuelve la posición en la que se
      *  encuentra en el array o -1 si no está
      *
@@ -104,7 +111,7 @@ public class Texto {
      *
      */
     private void insertarPalabraEnOrden(String palabra) {
-         int j = total - 1;
+        int j = total - 1;
         while (j >= 0 && palabras[j].getPalabra().compareTo(palabra) > 0) {
             palabras[j + 1] = palabras[j];
             j--;
@@ -115,8 +122,6 @@ public class Texto {
         total++;
 
     }
-
-   
 
     /**
      * Representación textual del array de palabras
@@ -129,13 +134,14 @@ public class Texto {
      *
      */
     public String toString() {
-        //TODO 
-        
-        
-        
-        
-        return null;
-
+        StringBuilder sb = new StringBuilder();
+         for (int i = 0; i < total; i++) {
+            if(i % 5 == 0){
+                sb.append("\n");
+            }
+             sb.append(palabras[i].toString());
+        }
+        return sb.toString();
     }
 
     /**
@@ -147,25 +153,20 @@ public class Texto {
         if (p >= 0 && p <= total) {
             return palabras[p];
         }
-        
         return null;
-
     }
 
-    
     /**
      *
      * @return un array de cadenas con las palabras del texto
      * capitalizadas de forma alterna
      */
     public String[] capitalizarAlterna() {
-       //TODO 
-        
-        
-        
-        
-        return null;
-
+        String[] cadenaAlterna = new String[total];
+        for (int i = 0; i < total; i++) {
+            cadenaAlterna[i] = Utilidades.capitalizarAlterna(String.valueOf(palabras[i]));
+        }
+        return cadenaAlterna;
     }
 
     /**
@@ -184,21 +185,28 @@ public class Texto {
         return repetidas;    
     }
 
-     /**
+    /**
      *
      * @return un array con la frecuencia de palabras de cada longitud
      * La palabra más larga consideraremos de longitud 15
      *
      */
     public int[] calcularFrecuenciaLongitud() {
-        //TODO 
-        
-        
-        
-        
-        return null;
+        int[] frecLong = new int[total];
+
+        int i = total - 1;
+        int max = 0;
+        while (i >= 0 && frecLong[i] > max) {
+            frecLong[i + 1] = palabras[i].getFrecuencia();
+            i -- ;
+            max = palabras[i].getFrecuencia();
+        }
+        frecLong[i + 1] = palabras[i].getFrecuencia(); 
+        total ++;
+
+        return frecLong;
     }
-    
+
     /**
      *
      * @param frecuencia se borra del array palabras aquellas de frecuencia
@@ -207,14 +215,9 @@ public class Texto {
      */
     public int borrarDeFrecuenciaMenor(int frecuencia) {
         //TODO 
-        
-        
-        
-        
+
         return 0;
     }
-
-   
 
     /**
      *  Lee de un fichero un texto formado por una
