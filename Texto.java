@@ -71,7 +71,10 @@ public class Texto {
     public void addPalabras(String linea) {
         String[] arr = linea.trim().split("[,\\.\\s]+");
         for(int i = 0; i < arr.length; i++){
-            if(!textoCompleto()){
+            if (estaPalabra(arr[i]) >= 0){
+                palabras[estaPalabra(arr[i])].incrementar();
+            }
+            else if(!textoCompleto()){
                 insertarPalabraEnOrden(arr[i]);
             } 
         }
@@ -86,6 +89,7 @@ public class Texto {
     public int estaPalabra(String palabra) {
         palabra = palabra.toUpperCase();
         for (int i = 0; i < total; i++){
+            // no hace faltas el ignorecase ya que siempre estan en mayusculas
             if (palabras[i].getPalabra().equals(palabra)){
                 return i;
             }
@@ -103,21 +107,16 @@ public class Texto {
      *
      */
     public void insertarPalabraEnOrden(String palabra) {
-        if (estaPalabra(palabra) >= 0){
-            palabras[estaPalabra(palabra)].incrementar();
+        Palabra pal = new Palabra(palabra);
+        int i = total -1;
+        while(i >= 0 && palabra.compareToIgnoreCase(palabras[i].getPalabra()) < 0){
+            palabras[i+1] = palabras[i];
+            i--;
         }
-        else{
-            Palabra pal = new Palabra(palabra);
-            int i = total -1;
-            while(i >= 0 && palabra.compareToIgnoreCase(palabras[i].getPalabra()) < 0){
-                palabras[i+1] = palabras[i];
-                i--;
-            }
-            palabras[i+1] = pal;
-            total++;
-        }
-    }
+        palabras[i+1] = pal;
+        total++;
 
+    }
 
     /**
      * Representación textual del array de palabras
@@ -137,7 +136,7 @@ public class Texto {
             }
             String palabra = palabras[i].toString();
             sb.append(palabra);
-            
+
         }
         return sb.toString();
     }
@@ -148,7 +147,7 @@ public class Texto {
      *      
      */
     public Palabra getPalabra(int p) {
-        if(p < 0 || p > total){
+        if(p < 0 || p >= total){
             return null;
         }
         return palabras[p];
@@ -162,7 +161,7 @@ public class Texto {
     public String[] capitalizarAlterna() {
         String[] arr = new String[total];
         for(int i = 0; i < arr.length; i++){
-            
+
             arr[i] = Utilidades.capitalizarAlterna(palabras[i].getPalabra());
         }
         return arr;
@@ -184,7 +183,7 @@ public class Texto {
         }
         return Arrays.copyOf(arr, p);   
     }
-    
+
     /**
      *
      * @return un array con la frecuencia de palabras de cada longitud
