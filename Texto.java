@@ -139,7 +139,6 @@ public class Texto {
             sb.append(String.format("%13s", palabras[i].getPalabra()));
             sb.append(String.format("%6s", frecuencia));
         }
-        System.out.println(sb.toString());
         return sb.toString();
     }
 
