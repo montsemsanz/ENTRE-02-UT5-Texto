@@ -1,7 +1,7 @@
 /**
  * clase Utilidades 
  * incluye  métodos estáticos para trabajar con String
- *
+ * @author David Sena
  */
 public class Utilidades {
     
@@ -16,9 +16,23 @@ public class Utilidades {
      */
     
     public static String capitalizarAlterna(String cadena) {
-        //TODO
-        
-        return null;
+        boolean mayuscula = true;
+        String str = "";
+        cadena = cadena.toLowerCase();
+        String mayus = cadena.toUpperCase();
+        for(int i = 1; i < cadena.length(); i++ ){
+            if(mayuscula){
+                str+= mayus.charAt(i-1);
+            } 
+            else{
+                str+= cadena.charAt(i-1);
+            }
+            
+            if(i % 3 == 0){
+                mayuscula = !mayuscula;
+            }
+        }
+        return str;
     }
     
     

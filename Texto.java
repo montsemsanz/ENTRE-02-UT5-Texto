@@ -10,7 +10,7 @@ import java.util.Scanner;
  *
  * El array guarda como máximo n palabras distintas
  *
- *
+ * @author David Sena
  */
 public class Texto {
 
@@ -138,16 +138,6 @@ public class Texto {
         }
         
         return sb.toString();
-        
-          // // StringBuilder sb = new StringBuilder();
-        // for(int i = 0; i < total; i++)   {
-            // if(i % 5 == 0)  {
-                // sb.append("\n");
-            // }
-            // sb.append(String.format("%5s", palabras[i].toString()));
-        // }
-        // return sb.toString();
-
     }
 
     /**
@@ -172,13 +162,13 @@ public class Texto {
      * capitalizadas de forma alterna
      */
     public String[] capitalizarAlterna() {
-       //TODO 
-        
-        
-        
-        
-        return null;
-
+        String[] ArrayCapitalizar = new String[total];
+        int j = 0;
+        for(int i = 0; i < total; i++)   {
+            ArrayCapitalizar[j] = Utilidades.capitalizarAlterna(palabras[i].getPalabra());
+                j++;
+        }
+        return ArrayCapitalizar; 
     }
 
     /**

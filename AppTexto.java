@@ -4,13 +4,15 @@ import java.util.stream.IntStream;
 /**
  *  Punto de entrada a la aplicación 
  *
- *
+ * @author David Sena
  */
 public class AppTexto {
     
     public static void main(String[] args) {
         
-        
+            if(args.length == 2){
+                
+            
             Texto texto = new Texto(Integer.parseInt(args[1]));
             texto.leerDeFichero(args[0]);
             
@@ -18,7 +20,7 @@ public class AppTexto {
             
             separador();
             
-            //testCapitalizarAlterna(texto);
+            testCapitalizarAlterna(texto);
             separador();
             
             testPalabrasConLetrasRepetidas(texto);
@@ -34,7 +36,12 @@ public class AppTexto {
             separador();
             
             
-   
+        }
+        else{
+            System.out.println("Error en nº argumentos "+"\n Usage:java AppTexto <fichero> <n>");
+                
+            
+        }
         
         
     }
