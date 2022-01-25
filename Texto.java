@@ -200,12 +200,24 @@ public class Texto {
      * repetidas
      */
     public String[] palabrasConLetrasRepetidas() {
-        //TODO 
-        
-        
-        
-        
-        return null;    }
+        int tam = 0;
+        //encontrar la cantidad de palabras con letras repetidas del array
+        for (int i = 0; i < total; i++) {
+            if (Utilidades.tieneLetrasRepetidas(palabras[i].getPalabra())) {
+                tam++;
+            }
+        }
+        String[] pConRepetidas = new String[tam];
+        int pos = 0;
+        //añadir las palabras al array
+        for (int i = 0; i < total; i++) {
+            if (Utilidades.tieneLetrasRepetidas(palabras[i].getPalabra())) {
+                pConRepetidas[pos] = palabras[i].getPalabra();
+                pos++;
+            }
+        }
+        return pConRepetidas;    
+    }
 
      /**
      *
