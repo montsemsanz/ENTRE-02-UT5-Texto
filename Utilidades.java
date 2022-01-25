@@ -20,20 +20,23 @@ public class Utilidades {
         int Aminisculas = 0;
         String carcater =  "";
         for (int i = 0; i < cadena.length();i++){
-            if(Amayusculas <= 3) {
+            if(Amayusculas < 3) {
                 char firstCharacter = cadena.toUpperCase().charAt(i);
                 carcater += firstCharacter;
                 Aminisculas = 0;
                 Amayusculas++;
             }
-            else if(Aminisculas <= 3){
+            else if(Aminisculas < 3){
                 char firstCharacter = cadena.toLowerCase().charAt(i);
                 carcater += firstCharacter;
-                Amayusculas = 0;
                 Aminisculas++;
+            }
+            else {
+                Amayusculas = 0;
             }
         }
         return carcater;
+
     }
 
     /**
