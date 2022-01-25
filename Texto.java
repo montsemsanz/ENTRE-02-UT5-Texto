@@ -174,13 +174,10 @@ public class Texto {
      *      
      */
     public Palabra getPalabra(int p) {
-        //TODO 
-        
-        
-        
-        
+        if (p >= 0 && p < total) {
+            return palabras[p];
+        }
         return null;
-
     }
 
     
