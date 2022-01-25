@@ -187,13 +187,11 @@ public class Texto {
      * capitalizadas de forma alterna
      */
     public String[] capitalizarAlterna() {
-       //TODO 
-        
-        
-        
-        
-        return null;
-
+       String[] alternado = new String[total];
+        for (int i = 0; i < total; i++) {
+            alternado[i] = Utilidades.capitalizarAlterna(palabras[i].getPalabra());
+        }
+        return alternado;
     }
 
     /**
