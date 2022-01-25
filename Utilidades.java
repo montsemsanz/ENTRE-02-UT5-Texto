@@ -17,7 +17,7 @@ public class Utilidades {
 
     public static String capitalizarAlterna(String cadena) {
         String str = "";
-        for(int i = 0; i < cadena.length(); i++){
+        for(int i = 0; i <= cadena.length(); i++){
             for(int j = 1; j <= 3; j++){
                 if(i < cadena.length()){
                     str += cadena.toUpperCase().charAt(i);
@@ -37,6 +37,7 @@ public class Utilidades {
                     return str;
                 }
             }
+            i--;
         }
         return str;
     }

@@ -10,7 +10,7 @@ public class AppTexto {
     
     public static void main(String[] args) {
         
-        
+        if(args.length == 1){
             Texto texto = new Texto(Integer.parseInt(args[1]));
             texto.leerDeFichero(args[0]);
             
@@ -36,7 +36,10 @@ public class AppTexto {
             
    
         
-        
+        }
+        else{
+            System.out.println("Error en numero de argumentos");
+        }
     }
     
     
