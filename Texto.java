@@ -30,7 +30,7 @@ public class Texto {
      * @return true si el texto está completo
      */
     public boolean textoCompleto() {
-        return total==palabras.length;
+        return palabras.length==total;
     }
 
     /**
@@ -73,7 +73,8 @@ public class Texto {
      * insertarPalabraEnOrden()
      */
     public void addPalabras(String linea) {
-        String arraycopia [] = linea.split(" ");
+        String criterio="[,\\.\\s]+";
+        String arraycopia [] = linea.split(criterio) ;
         for(int i = 0; i < arraycopia.length;i++){
             if(estaPalabra(arraycopia[i]) >= 0){
                 palabras[i].incrementar();
@@ -117,8 +118,8 @@ public class Texto {
             palabras[j + 1] = palabras[j];
             j = j -1;
         }
-        total++;
         palabras[j + 1]= new Palabra (palabra);
+        total++;   
     }
 
     /**
@@ -214,16 +215,15 @@ public class Texto {
      * 
      */
     public int borrarDeFrecuenciaMenor(int frecuencia) {
-        //Aparece en los apuntes el codido de borrado y desplazamiento a la izda
         int totalborradas = 0;
         int x = 0;
         while (x < total){
             if(palabras[x].getFrecuencia() < frecuencia){
-                for(int j = x +1 ; j < total; j++) {
-                    System.arraycopy(palabras,x + 1,palabras,x,total - x -1);
-                    totalborradas++;
-                    total--;
+                for (int i = total - 1; i <= 0; i--) {
+                    palabras[x - 1] = palabras[x];
                 }
+                total--;
+                totalborradas++;
             }
             x++;
         }
