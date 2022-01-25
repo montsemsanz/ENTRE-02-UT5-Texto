@@ -15,44 +15,41 @@ public class AppTexto {
         }
         else{
             Texto texto = new Texto(Integer.parseInt(args[1]));
-        texto.leerDeFichero(args[0]);
+            texto.leerDeFichero(args[0]);
 
-        System.out.println(texto.toString());
+            System.out.println(texto.toString());
 
-        separador();
+            separador();
 
-        // testCapitalizarAlterna(texto);
-        // separador();
+            testCapitalizarAlterna(texto);
+            separador();
 
-        // testPalabrasConLetrasRepetidas(texto);
-        // separador();
+            testPalabrasConLetrasRepetidas(texto);
+            separador();
 
-        // testCalcularFrecuenciaLongitud(texto);
-        // separador();
+            // testCalcularFrecuenciaLongitud(texto);
+            // separador();
 
-        // testBorrarDeFrecuenciaMenor(texto);
-        // separador();
+            // testBorrarDeFrecuenciaMenor(texto);
+            // separador();
 
-        // testCalcularFrecuenciaLongitud(texto);
-        // separador();
+            // testCalcularFrecuenciaLongitud(texto);
+            // separador();
         }
 
         
-
-   
-        
     }
 
-    // private static void testCapitalizarAlterna(Texto texto) {
-    // System.out.println("Después de capitalizar las palabras del texto ");
-    // System.out.println(Arrays.toString(texto.capitalizarAlterna()));
+    private static void testCapitalizarAlterna(Texto texto) {
+        System.out.println("Después de capitalizar las palabras del texto ");
+        System.out.println(Arrays.toString(texto.capitalizarAlterna()));
 
-    // }
+    }
 
-    // private static void testPalabrasConLetrasRepetidas(Texto texto) {
-    // System.out.println("Palabras en el texto con letras repetidas ");
-    // System.out.println(Arrays.toString(texto.palabrasConLetrasRepetidas()));
-    // }
+    private static void testPalabrasConLetrasRepetidas(Texto texto) {
+        System.out.println("Palabras en el texto con letras repetidas ");
+        System.out.println(Arrays.toString(texto.palabrasConLetrasRepetidas()));
+    }
 
     // private static void testBorrarDeFrecuenciaMenor(Texto texto) {
     // int frecuencia = 3;

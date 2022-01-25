@@ -69,7 +69,7 @@ public class Texto {
         String[] cadena = linea.split("[,\\.\\s]+");
 
         for (int i = 0; i < cadena.length; i++) {
-            
+
             if (estaPalabra(cadena[i]) == -1) {
                 insertarPalabraEnOrden(cadena[i]); 
             }
@@ -130,7 +130,7 @@ public class Texto {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < total; i++) {
             sb.append(palabras[i].toString());
-            
+
             if ((i + 1) % 5 == 0) {
                 sb.append("\n");
             }
@@ -140,8 +140,7 @@ public class Texto {
 
     /**
      *  Devuelve la palabra de la posición p
-     *  Si p es incorrecto se devuelve null
-     *      
+     *  Si p es incorrecto se devuelve null    
      */
     public Palabra getPalabra(int p) {
         if (p < 0 || p >= total) {
@@ -153,28 +152,38 @@ public class Texto {
     }
 
     /**
-     *
      * @return un array de cadenas con las palabras del texto
      * capitalizadas de forma alterna
      */
     public String[] capitalizarAlterna() {
-        //TODO 
+        String[] capitalizadas = new String[total];
 
-        return null;
+        for (int i = 0; i < total; i++) {
+            capitalizadas[i] = Utilidades.capitalizarAlterna(palabras[i].getPalabra());
+        }
+
+        return capitalizadas;
     }
 
     /**
-     *
      * @return un array de cadenas con las palabras que tienen letras
      * repetidas
      */
     public String[] palabrasConLetrasRepetidas() {
-        //TODO 
-
-        return null;    }
+        String[] repetidas = new String[total];
+        int j = 0;
+        
+        for (int i = 0; i < total; i++) {
+            if (Utilidades.tieneLetrasRepetidas(palabras[i].getPalabra())) {
+                repetidas[j] = palabras[i].getPalabra();
+                j++;
+            }
+        }
+        
+        return Arrays.copyOf(repetidas, j);    
+    }
 
     /**
-     *
      * @return un array con la frecuencia de palabras de cada longitud
      * La palabra más larga consideraremos de longitud 15
      *
@@ -186,7 +195,6 @@ public class Texto {
     }
 
     /**
-     *
      * @param frecuencia se borra del array palabras aquellas de frecuencia
      *                   menor a la proporcionada
      * @return el n de palabras borradas
@@ -212,6 +220,5 @@ public class Texto {
             this.addPalabras(linea);
         }
         sc.close();
-
     }
 }
