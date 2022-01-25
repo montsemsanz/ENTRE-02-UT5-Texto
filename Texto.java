@@ -41,9 +41,17 @@ public class Texto {
      * el texto y guardadas en el array
      */
     public int totalPalabras() {
-        //TODO
-        
-        return 0;
+        // int aux = 0;
+        // for (int i = 0; i < total; i++) {
+            // String palabra = palabras[i].getPalabra();
+            // for (int j = i + 1; j < total; j++){
+                // if (palabra.equals(palabras[j].getPalabra())){
+                    // aux++;
+                // }
+            // }
+        // }
+        // return total - aux;//palabras distintas
+        return total;
     }
 
     /**
