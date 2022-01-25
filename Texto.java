@@ -32,7 +32,7 @@ public class Texto {
      * @return true si el texto está completo
      */
     public boolean textoCompleto() {
-        
+
         return total == palabras.length;
     }
 
@@ -42,7 +42,7 @@ public class Texto {
      * el texto y guardadas en el array
      */
     public int totalPalabras() {
-  
+
         return total;
     }
 
@@ -69,21 +69,28 @@ public class Texto {
      * insertarPalabraEnOrden()
      */
     public void addPalabras(String linea) {
-        //TODO
-
+        String[] arr = linea.trim().split("[,\\.\\s]+");
+        for(int i = 0; i < arr.length; i++){
+            if(!textoCompleto()){
+                insertarPalabraEnOrden(arr[i]);
+            } 
+        }
     }
-    
-     /**
+
+    /**
      *  dada una palabra devuelve la posición en la que se
      *  encuentra en el array o -1 si no está
      *
      *  Indiferente mayúsculas y minúsculas
      */
     public int estaPalabra(String palabra) {
-        //TODO
-        
-        
-        return 0;
+        palabra = palabra.toUpperCase();
+        for (int i = 0; i < total; i++){
+            if (palabras[i].getPalabra().equals(palabra)){
+                return i;
+            }
+        }
+        return -1;
     }
 
     /**
@@ -92,20 +99,25 @@ public class Texto {
      *                de forma que el array palabras quede ordenado
      *                alfabéticamente
      *  Solo hay que insertar en este método, se asume que la palabra
-     *                no está y que es posible añadirla
+     *                no está   que es posible añadirla
      *
      */
-    private void insertarPalabraEnOrden(String palabra) {
-       //TODO
-       
-       
-       
-       
-       
-       
+    public void insertarPalabraEnOrden(String palabra) {
+        if (estaPalabra(palabra) >= 0){
+            palabras[estaPalabra(palabra)].incrementar();
+        }
+        else{
+            Palabra pal = new Palabra(palabra);
+            int i = total -1;
+            while(i >= 0 && palabra.compareToIgnoreCase(palabras[i].getPalabra()) < 0){
+                palabras[i+1] = palabras[i];
+                i--;
+            }
+            palabras[i+1] = pal;
+            total++;
+        }
     }
 
-   
 
     /**
      * Representación textual del array de palabras
@@ -118,13 +130,16 @@ public class Texto {
      *
      */
     public String toString() {
-        //TODO 
-        
-        
-        
-        
-        return null;
-
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i < total; i++){
+            if(i%5 == 0){
+                sb.append("\n");
+            }
+            String palabra = palabras[i].toString();
+            sb.append(palabra);
+            
+        }
+        return sb.toString();
     }
 
     /**
@@ -133,29 +148,24 @@ public class Texto {
      *      
      */
     public Palabra getPalabra(int p) {
-        //TODO 
-        
-        
-        
-        
-        return null;
-
+        if(p < 0 || p > total){
+            return null;
+        }
+        return palabras[p];
     }
 
-    
     /**
      *
      * @return un array de cadenas con las palabras del texto
      * capitalizadas de forma alterna
      */
     public String[] capitalizarAlterna() {
-       //TODO 
-        
-        
-        
-        
-        return null;
-
+        String[] arr = new String[total];
+        for(int i = 0; i < arr.length; i++){
+            
+            arr[i] = Utilidades.capitalizarAlterna(palabras[i].getPalabra());
+        }
+        return arr;
     }
 
     /**
@@ -164,28 +174,35 @@ public class Texto {
      * repetidas
      */
     public String[] palabrasConLetrasRepetidas() {
-        //TODO 
-        
-        
-        
-        
-        return null;    }
-
-     /**
+        String[] arr = new String[total];
+        int p = 0;
+        for(int i = 0; i < arr.length; i++){
+            if (Utilidades.tieneLetrasRepetidas(palabras[i].getPalabra())){
+                arr[p] = palabras[i].getPalabra();
+                p++;
+            }
+        }
+        return Arrays.copyOf(arr, p);   
+    }
+    
+    /**
      *
      * @return un array con la frecuencia de palabras de cada longitud
      * La palabra más larga consideraremos de longitud 15
      *
      */
     public int[] calcularFrecuenciaLongitud() {
-        //TODO 
-        
-        
-        
-        
-        return null;
+        int[] arr = new int[15];
+        for(int i = 0; i < arr.length; i++){
+            for(int j = 0; j < total; j++){
+                if (palabras[j].getPalabra().length() == i+1){
+                    arr[i]++;
+                }
+            }
+        }
+        return arr;
     }
-    
+
     /**
      *
      * @param frecuencia se borra del array palabras aquellas de frecuencia
@@ -193,15 +210,19 @@ public class Texto {
      * @return el n de palabras borradas
      */
     public int borrarDeFrecuenciaMenor(int frecuencia) {
-        //TODO 
-        
-        
-        
-        
-        return 0;
-    }
+        int cont = 0;
+        for (int i = total -1; i >= 0; i--){
+            if (palabras[i].getFrecuencia() < frecuencia){
+                for (int j = i; j < total; j++){
+                    palabras[j] = palabras[j+1];
+                }
+                total--;
+                cont++;
+            }
+        }
 
-   
+        return cont;
+    }
 
     /**
      *  Lee de un fichero un texto formado por una

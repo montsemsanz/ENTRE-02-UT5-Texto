@@ -12,7 +12,10 @@ public class AppTexto {
     
     public static void main(String[] args) {
         
-        
+            if (args.length != 2){
+                throw new IllegalArgumentException("\nError en nº argumentos\nUsage:java Apptexto <fichero> <n>");
+            }
+            
             Texto texto = new Texto(Integer.parseInt(args[1]));
             texto.leerDeFichero(args[0]);
             
