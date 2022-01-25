@@ -54,9 +54,21 @@ public class Utilidades {
      *
      */
     public static boolean tieneLetrasRepetidas(String cadena) {
-        //TODO
-        
-        return false;
+        boolean repetida = false;
+        String auxCadena = cadena.toLowerCase();
+        int i = 0;
+        while (i < cadena.length() && !repetida) {
+            String letra = String.valueOf(auxCadena.charAt(i));
+            int j = i + 1;
+            while (j < cadena.length() && !repetida) {
+                if (letra.equals(String.valueOf(auxCadena.charAt(j)))) {
+                    repetida = true;
+                }
+                j++;
+            }
+            i++;
+        }
+        return repetida;
     }
     
     
