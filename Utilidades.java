@@ -31,9 +31,27 @@ public class Utilidades {
      *
      */
     public static boolean tieneLetrasRepetidas(String cadena) {
-        //TODO
+         int veces = 0;
+         //String aux = cadena.toLowerCase();
+         cadena = cadena.toLowerCase();
+        // int pos = 0;
+        // while (pos != -1) {
+            // veces++;
+            // aux = aux.substring(pos + cadena.length()-1);
+            // pos = aux.indexOf(cadena);
+        // }
         
-        return false;
+        for(int i = 0; i < cadena.length();i++){
+            for(int j = 0; j < cadena.length();j++){
+                if(cadena.charAt(j) == cadena.charAt(i)){
+                    veces++;
+                }
+                else {
+                    //
+                }
+            }
+        }
+        return veces > 1;
     }
     
     
