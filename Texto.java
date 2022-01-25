@@ -242,15 +242,33 @@ public class Texto {
      * @return el n de palabras borradas
      */
     public int borrarDeFrecuenciaMenor(int frecuencia) {
-        //TODO 
-        
-        
-        
-        
-        return 0;
+        //asumimos frecuencia correcta
+        int palabrasBorradas = 0;
+        int i = 0;
+        while (i < total) {
+            if (palabras[i].getFrecuencia() < frecuencia) {
+                borrarEnPosicion(i);
+                palabrasBorradas++;
+            }
+            else {
+                i++;
+            }
+        }
+        return palabrasBorradas;
     }
-
-   
+    
+    /**
+     * 
+     */
+    private void borrarEnPosicion(int p) {
+        //desplazar a la izquierda
+        if (p >= 0 && p < total) {
+            for (int i = p + 1; i < total; i++) {
+                palabras[i - 1] = palabras[i];
+            }
+            total--;
+        }
+    }
 
     /**
      *  Lee de un fichero un texto formado por una
