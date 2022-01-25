@@ -42,15 +42,16 @@ public class Texto {
      * el texto y guardadas en el array
      */
     public int totalPalabras() {
-        int palabrasD = 0;
-        for(int i = 0; i < total; i++){
-            if(!estaRepetida(palabras[i])) {
-                palabrasD++;
-            }
+        // int palabrasD = 0;
+        // for(int i = 0; i < total; i++){
+        // if(!estaRepetida(palabras[i])) {
+        // palabrasD++;
+        // }
 
-        }
+        // }
 
-        return palabrasD;
+        // return palabrasD;
+        return total;
     }
 
     /**
@@ -159,10 +160,10 @@ public class Texto {
         int contador = 0;
         String cadena = ""; 
         for(int i = 0; i < total; i++) {
-            cadena += palabras[i].toString();
-            if(contador % 5 == 0) {
+            if(contador % 5 == 0 && contador > 0) {
                 cadena += "\n";
             }
+            cadena += palabras[i].toString();
             contador++;
         }
         return cadena;
@@ -218,36 +219,21 @@ public class Texto {
         String[] repetidas = new String[total];
         int repetidasL = 0;
         for(int i = 0; i < total; i++) {
-            if(tieneCifrasRepetidas(palabras[i].getPalabra())){
+            if(Utilidades.tieneLetrasRepetidas(palabras[i].getPalabra())){
                 repetidas[repetidasL] = palabras[i].getPalabra();
                 repetidasL++;
             }
 
             // for(int j = 0; j < palabras[i].getPalabra().length(); j++){
             // for(int h = 1; h < palabras[i].getPalabra().length();h++){
-            // if(palabras[i].getPalabra().indexOf(j) == palabras[i].getPalabra().indexOf(h)){
+            // if(palabras[i].getPalabra().toLowerCase().charAt(j) == palabras[i].getPalabra().toLowerCase().charAt(h)){
             // repetidas[repetidasL] = palabras[i].getPalabra();                 
             // }
             // }
             // }
         }
-
+        repetidas = Arrays.copyOf(repetidas, repetidasL);
         return repetidas;    
-    }
-
-    /**
-     * Merodo auxiliar para comprobar si tiene letras repetidas una palabra
-     */
-    public boolean tieneCifrasRepetidas(String palabra)
-    {
-        for(int i = 0; i < palabra.length(); i++) {
-            for(int j = i+ 1; j < palabra.length(); j++) {
-                if(palabra.toLowerCase().charAt(i) == palabra.toLowerCase().charAt(j)) {
-                    return true;
-                }
-            }
-        }
-        return false;
     }
 
     /**
@@ -267,11 +253,6 @@ public class Texto {
             }
 
         }
-        // int j = 0;
-        // for(int i = 0; i < frecuencias.length; i++){
-        // frecuencias[j] = palabras[i].getFrecuencia();
-        // j++;
-        // }
 
         return frecuencias;
     }
@@ -281,8 +262,8 @@ public class Texto {
      */
     public int calcularLongitud(String cadena)
     {
-        int longa = cadena.length();
-        return longa;
+
+        return cadena.length();
     }
 
     /**
