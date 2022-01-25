@@ -77,7 +77,22 @@ public class Texto {
      * insertarPalabraEnOrden()
      */
     public void addPalabras(String linea) {
-        //TODO
+        if (!textoCompleto()){
+            String auxLinea = linea.toUpperCase().trim();
+            String delimitadores = "[ .,]+";
+            String[] words = auxLinea.split(delimitadores);
+            //añadir words a palabras...
+            for (int i = 0; i < words.length; i++) {
+                if (estaPalabra(words[i]) == -1) { //añadir palabra
+                    insertarPalabraEnOrden(words[i]);
+                }
+                else { //sumar frecuencia de la palabra
+                    int pos = estaPalabra(words[i]);
+                    palabras[pos].incrementar();
+                }
+            }
+
+        }
 
     }
     
