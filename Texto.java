@@ -69,12 +69,13 @@ public class Texto {
         String[] cadena = linea.split("[,\\.\\s]+");
 
         for (int i = 0; i < cadena.length; i++) {
+            
             if (estaPalabra(cadena[i]) == -1) {
                 insertarPalabraEnOrden(cadena[i]); 
             }
-            // else {
-                // palabras[i].incrementar();
-            // }
+            else {
+                palabras[estaPalabra(cadena[i])].incrementar();
+            }
         }
     }
 
@@ -126,14 +127,15 @@ public class Texto {
      * De forma eficiente ya que habrá muchas concatenaciones
      */
     public String toString() {
-        String str = "";
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < total; i++) {
-            str += palabras[i].getPalabra() + " " + palabras[i].getFrecuencia();
+            sb.append(palabras[i].toString());
+            
             if ((i + 1) % 5 == 0) {
-                str += "\n";
+                sb.append("\n");
             }
         }
-        return str;
+        return sb.toString();
     }
 
     /**
