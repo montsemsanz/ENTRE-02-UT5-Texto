@@ -41,7 +41,7 @@ public class Texto {
     public int totalPalabras() {
         int diferentes = 0;
         for(int i = 0;i < total;i++) {
-            for(int aux = 1; aux < total; aux++){
+            for(int aux = 0; aux < total; aux++){
                 if(!palabras[i].equals(palabras[aux]) && aux != i){
                     diferentes++;
                 }
@@ -170,6 +170,7 @@ public class Texto {
         }
         return arraycapailzado;
     }
+
     /**
      *
      * @return un array de cadenas con las palabras que tienen letras
@@ -179,14 +180,10 @@ public class Texto {
         String [] palabrasConLetrasRepetidas = new String [total];
         int aux = 0;
         for (int i = 0; i < total ; i++){
-            int num = 0;
-            for (int j = 1;j < palabras[i].toString().length();j++){
-                if(palabras[i].toString().indexOf(num)==palabras[i].toString().indexOf(j)){
-                    palabrasConLetrasRepetidas[aux] = palabras[i].toString();
-                    aux++;
-                }
+            if(Utilidades.tieneLetrasRepetidas(palabras[i].getPalabra())){
+                palabrasConLetrasRepetidas [aux] = palabras[i].getPalabra();
+                aux++;
             }
-            num++;
         }
         return palabrasConLetrasRepetidas;    
     }
