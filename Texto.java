@@ -39,17 +39,7 @@ public class Texto {
      * el texto y guardadas en el array
      */
     public int totalPalabras() {
-        int suma = 0;
-
-        // for (int i = 0; i < total; i++) {
-        // for (int j = i; j < total; j++) {
-        // if (!palabras[i].getPalabra().equals(palabras[j + 1].getPalabra())) {
-        // suma++;
-        // }
-        // }
-        // }
-
-        return suma;
+        return total;
     }
 
     /**
@@ -77,14 +67,14 @@ public class Texto {
     public void addPalabras(String linea) {
         linea = linea.trim();
         String[] cadena = linea.split("[,\\.\\s]+");
-    
+
         for (int i = 0; i < cadena.length; i++) {
             if (estaPalabra(cadena[i]) == -1) {
                 insertarPalabraEnOrden(cadena[i]); 
             }
-            else {
-                palabras[i].incrementar();
-            }
+            // else {
+                // palabras[i].incrementar();
+            // }
         }
     }
 
@@ -134,13 +124,16 @@ public class Texto {
      * (ver enunciado)
      *
      * De forma eficiente ya que habrá muchas concatenaciones
-     *
-     *
      */
     public String toString() {
-        //TODO 
-
-        return null;
+        String str = "";
+        for (int i = 0; i < total; i++) {
+            str += palabras[i].getPalabra() + " " + palabras[i].getFrecuencia();
+            if ((i + 1) % 5 == 0) {
+                str += "\n";
+            }
+        }
+        return str;
     }
 
     /**
@@ -149,9 +142,12 @@ public class Texto {
      *      
      */
     public Palabra getPalabra(int p) {
-        //TODO 
-
-        return null;
+        if (p < 0 || p >= total) {
+            return null;
+        }
+        else{
+            return palabras[p];
+        }    
     }
 
     /**
