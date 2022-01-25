@@ -23,7 +23,8 @@ public class Texto {
      * e inicializa adecuadamente el resto de atributos
      */
     public Texto(int n) {
-        //TODO
+        palabras = new Palabra[n];
+        total = 0;
     }
 
     /**
