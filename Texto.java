@@ -1,3 +1,6 @@
+/**
+ * @Author Amine Ezzaidi
+ */
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -23,7 +26,7 @@ public class Texto {
      * e inicializa adecuadamente el resto de atributos
      */
     public Texto(int n) {
-        //TODO
+        palabras = new Palabra [n];
     }
 
     /**
@@ -31,9 +34,8 @@ public class Texto {
      * @return true si el texto está completo
      */
     public boolean textoCompleto() {
-        //TODO
-        
-        return true;
+
+        return total == palabras.length;
     }
 
     /**
@@ -42,9 +44,8 @@ public class Texto {
      * el texto y guardadas en el array
      */
     public int totalPalabras() {
-        //TODO
-        
-        return 0;
+
+        return total;
     }
 
     /**
@@ -73,18 +74,20 @@ public class Texto {
         //TODO
 
     }
-    
-     /**
+
+    /**
      *  dada una palabra devuelve la posición en la que se
      *  encuentra en el array o -1 si no está
      *
      *  Indiferente mayúsculas y minúsculas
      */
     public int estaPalabra(String palabra) {
-        //TODO
-        
-        
-        return 0;
+        for (int i= 0; i < total ; i++){
+            if(palabras [i].equals(palabra)){
+                return i;
+            }
+        }
+        return -1;
     }
 
     /**
@@ -96,17 +99,19 @@ public class Texto {
      *                no está y que es posible añadirla
      *
      */
-    private void insertarPalabraEnOrden(String palabra) {
-       //TODO
-       
-       
-       
-       
-       
-       
-    }
+    private  void insertarPalabraEnOrden(String palabra) {
+        Palabra palabraOrden = new Palabra(palabra);
+        int i = total -1;
+        if (!textoCompleto()){
+            while(i >= 0 && palabras[i].getPalabra().compareToIgnoreCase(palabra) > 0){
+                palabras[i + 1] = palabras[i];
+                i--;
+            }
+        }
+        palabras[i + 1] = palabraOrden;      
+        total++;
 
-   
+    }
 
     /**
      * Representación textual del array de palabras
@@ -120,12 +125,8 @@ public class Texto {
      */
     public String toString() {
         //TODO 
-        
-        
-        
-        
-        return null;
 
+        return null;
     }
 
     /**
@@ -135,28 +136,19 @@ public class Texto {
      */
     public Palabra getPalabra(int p) {
         //TODO 
-        
-        
-        
-        
-        return null;
 
+        return null;
     }
 
-    
     /**
      *
      * @return un array de cadenas con las palabras del texto
      * capitalizadas de forma alterna
      */
     public String[] capitalizarAlterna() {
-       //TODO 
-        
-        
-        
-        
-        return null;
+        //TODO 
 
+        return null;
     }
 
     /**
@@ -165,28 +157,22 @@ public class Texto {
      * repetidas
      */
     public String[] palabrasConLetrasRepetidas() {
-        //TODO 
-        
-        
-        
-        
-        return null;    }
+        return null;
+    }
 
-     /**
+    /**
      *
      * @return un array con la frecuencia de palabras de cada longitud
      * La palabra más larga consideraremos de longitud 15
      *
      */
+
     public int[] calcularFrecuenciaLongitud() {
         //TODO 
-        
-        
-        
-        
+
         return null;
     }
-    
+
     /**
      *
      * @param frecuencia se borra del array palabras aquellas de frecuencia
@@ -195,14 +181,9 @@ public class Texto {
      */
     public int borrarDeFrecuenciaMenor(int frecuencia) {
         //TODO 
-        
-        
-        
-        
+
         return 0;
     }
-
-   
 
     /**
      *  Lee de un fichero un texto formado por una

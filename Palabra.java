@@ -1,4 +1,8 @@
 /**
+ * @Author Amine Ezzaidi
+ */
+
+/**
  * Representa a una palabra y su frecuencia de aparición
  * en un texto
  *

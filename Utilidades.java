@@ -1,4 +1,8 @@
 /**
+ * @Author Amine Ezzaidi
+ */
+
+/**
  * clase Utilidades 
  * incluye  métodos estáticos para trabajar con String
  *
@@ -16,9 +20,11 @@ public class Utilidades {
      */
     
     public static String capitalizarAlterna(String cadena) {
-        //TODO
+        String resul = cadena.substring(0,3);
+        resul = resul.toUpperCase();
+            
         
-        return null;
+        return resul;
     }
     
     
@@ -31,8 +37,13 @@ public class Utilidades {
      *
      */
     public static boolean tieneLetrasRepetidas(String cadena) {
-        //TODO
-        
+        cadena = cadena.toLowerCase();
+        for(int i = 0; i < cadena.length(); i++){
+            char k = cadena.charAt(i);
+            if (cadena.substring(i+1).indexOf(k) != -1){
+                return true;
+            }
+        }
         return false;
     }
     
