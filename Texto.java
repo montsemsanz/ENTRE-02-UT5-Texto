@@ -106,15 +106,15 @@ public class Texto {
      *
      */
     private void insertarPalabraEnOrden(String palabra) {
-        // En este metodo adapto el codigo de los apuntes para poder ejecutarlo en este proyecto
-        int aux = total -1;
-        // Empieza a recorrer el array desde atras
-        while(aux > 0 && palabras[aux].toString().compareTo(palabra)>=0) {
-            palabras[aux + 1] = palabras[aux];
-            aux--;
+        if (estaPalabra(palabra) == -1 && !textoCompleto()) {
+            int aux = total - 1;
+            while (aux >= 0 && palabras[aux].getPalabra().compareToIgnoreCase(palabra) > 0) {
+                palabras[aux + 1] = palabras[aux];
+                aux--;
+            }
+            palabras[aux + 1] = new Palabra(palabra);
+            total++;
         }
-        palabras[aux + 1] = new Palabra(palabra);
-        total++;
     }
 
     /**
@@ -128,14 +128,30 @@ public class Texto {
      *
      */
     public String toString() {
+        // Creamos el StringBuilder
         StringBuilder sb = new StringBuilder();
+        // Recorremos el Array
         for(int i = 0; i < total; i++)   {
+            // Si i resto 5 es igual a 0 hacer salto de linea
             if(i % 5 == 0)  {
                 sb.append("\n");
             }
+
             sb.append(String.format("%5s", palabras[i].toString()));
         }
+        // Devuelve el String
         return sb.toString();
+    }
+
+    /**
+     * An example of a method - replace this comment with your own
+     *
+     * @param  y   a sample parameter for a method
+     * @return     the sum of x and y
+     */
+    public void print()
+    {
+        System.out.println(toString());
     }
 
     /**
@@ -156,11 +172,26 @@ public class Texto {
      * capitalizadas de forma alterna
      */
     public String[] capitalizarAlterna() {
-        String[] cap = new String[total];
-        for(int i = 0; i < total; i++){
-            cap[i] = Utilidades.capitalizarAlterna(palabras[i].getPalabra());
+        String[] i = new String[total];
+
+        for(int j = 0; j < total; j++) {
+            String str = "";
+            int k = 0;
+            for(int l = 0;  l< palabras[j].getPalabra().length(); l++) {
+
+                if(k >= 3 && k < 6 && k < palabras.length) {
+                    str += palabras[j].getPalabra().toLowerCase().charAt(k);
+                    k++;   
+                }
+                else{
+                    str += palabras[j].getPalabra().toUpperCase().charAt(k);
+                    k++;
+                }
+            }
+            i[j] = str;
         }
-        return cap;
+
+        return i;
     }
 
     /**
@@ -169,9 +200,21 @@ public class Texto {
      * repetidas
      */
     public String[] palabrasConLetrasRepetidas() {
-        //TODO 
-
-        return null;    
+        int contador = 0;
+        int i = 0;
+        for(int j = 0; j < total; j++){
+            if(Utilidades.tieneLetrasRepetidas(palabras[i].getPalabra())){
+                contador++;
+            }
+        }
+        String[] letrasRepetidas = new String[contador];
+        for(int k = 0; k < total; k++){
+            if(Utilidades.tieneLetrasRepetidas(palabras[k].getPalabra())){
+                letrasRepetidas[i] = palabras[k].getPalabra();
+                i++;
+            }
+        }
+        return letrasRepetidas;
     }
 
     /**
@@ -181,9 +224,16 @@ public class Texto {
      *
      */
     public int[] calcularFrecuenciaLongitud() {
-        //TODO 
+        int[] frecuenciaDeLongitud = new int[15];
+        int i = 0; 
+        int palabrasTotales;
+        while(i < total){
+            palabrasTotales = palabras[i].getPalabra().length();
+            frecuenciaDeLongitud[palabrasTotales]++;
+            i++;
+        }
 
-        return null;
+        return frecuenciaDeLongitud;    
     }
 
     /**
@@ -193,9 +243,15 @@ public class Texto {
      * @return el n de palabras borradas
      */
     public int borrarDeFrecuenciaMenor(int frecuencia) {
-        //TODO 
-
-        return 0;
+        int b = 0;  
+        for(int i = total -1; i >= 0; i--) {
+            if(palabras[i].getFrecuencia() < frecuencia) {
+                System.arraycopy(palabras, i+1, palabras, i, total - i -1);
+                b++;
+                total--;
+            }
+        }
+        return b;
     }
 
     /**
@@ -213,6 +269,6 @@ public class Texto {
             this.addPalabras(linea);
         }
         sc.close();
-
+    
     }
 }
