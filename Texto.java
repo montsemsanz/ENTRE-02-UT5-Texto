@@ -103,10 +103,18 @@ public class Texto {
      *  Indiferente mayúsculas y minúsculas
      */
     public int estaPalabra(String palabra) {
-        //TODO
-        
-        
-        return 0;
+        int pos = -1;
+        String aux = palabra.toUpperCase();
+        int i = 0;
+        while (i < total && pos == -1) {
+            if (palabras[i].getPalabra().equals(aux)) {
+                pos = i;
+            }
+            else {
+                i++;
+            }
+        }
+        return pos;
     }
 
     /**
