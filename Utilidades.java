@@ -70,36 +70,36 @@ public class Utilidades {
         return false;
     }
 
-    // /**
-    // *
-    // */
-    // public static void main(String[] args) {
-    // String cadena = "zaPaTo";
-    // System.out.println(cadena + "\tCapitalizada alterna: " +
-    // Utilidades.capitalizarAlterna(cadena));
-    // cadena = "pez";
-    // System.out.println(cadena + "\tCapitalizada alterna: " +
-    // Utilidades.capitalizarAlterna(cadena));
+    /**
+    *
+    */
+    public static void main(String[] args) {
+    String cadena = "zaPaTo";
+    System.out.println(cadena + "\tCapitalizada alterna: " +
+    Utilidades.capitalizarAlterna(cadena));
+    cadena = "pez";
+    System.out.println(cadena + "\tCapitalizada alterna: " +
+    Utilidades.capitalizarAlterna(cadena));
 
-    // cadena = "vaso";
-    // System.out.println(cadena + "\tCapitalizada alterna: " +
-    // Utilidades.capitalizarAlterna(cadena));
+    cadena = "vaso";
+    System.out.println(cadena + "\tCapitalizada alterna: " +
+    Utilidades.capitalizarAlterna(cadena));
 
-    // cadena = "semana";
-    // System.out.println(cadena + "\tTiene letras repetidas?: " +
-    // Utilidades.tieneLetrasRepetidas(cadena));
+    cadena = "semana";
+    System.out.println(cadena + "\tTiene letras repetidas?: " +
+    Utilidades.tieneLetrasRepetidas(cadena));
 
-    // cadena = "quebrantos";
-    // System.out.println(cadena + "\tTiene letras repetidas?: " +
-    // Utilidades.tieneLetrasRepetidas(cadena));
+    cadena = "quebrantos";
+    System.out.println(cadena + "\tTiene letras repetidas?: " +
+    Utilidades.tieneLetrasRepetidas(cadena));
 
-    // cadena = "y";
-    // System.out.println(cadena + "\tTiene letras repetidas?: " +
-    // Utilidades.tieneLetrasRepetidas(cadena));
+    cadena = "y";
+    System.out.println(cadena + "\tTiene letras repetidas?: " +
+    Utilidades.tieneLetrasRepetidas(cadena));
 
-    // cadena = "de";
-    // System.out.println(cadena + "\tTiene letras repetidas?: " +
-    // Utilidades.tieneLetrasRepetidas(cadena));
+    cadena = "de";
+    System.out.println(cadena + "\tTiene letras repetidas?: " +
+    Utilidades.tieneLetrasRepetidas(cadena));
 
-    // }
+    }
 }
