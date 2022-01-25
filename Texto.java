@@ -226,12 +226,13 @@ public class Texto {
      *
      */
     public int[] calcularFrecuenciaLongitud() {
-        //TODO 
-        
-        
-        
-        
-        return null;
+        //Asumiendo que la palabra debe ser de al menos 1 letra 
+        int[] longitudes = new int[15];
+        for (int i = 0; i < total; i++) {
+            int longitud = palabras[i].getPalabra().length();
+            longitudes[longitud - 1]++;
+        }
+        return longitudes;
     }
     
     /**
